@@ -46,4 +46,68 @@
       fortune | cowsay
     '';
   };
+
+  programs.waybar = {
+    enable = true;
+    settings.mainBar = {
+      layer = "top";
+      position  = "top";
+      width = 30;
+      spacing = "4px";
+      modules-left = [
+        "hyprland/workspaces"
+        "hyprland/submap"
+        "tray"
+      ];
+      modules-center = [
+        "hyprland/window"
+      ];
+      modules-right = [
+        "idle_inhibitor"
+        "pulseaudio"
+        "network"
+        "cpu"
+        "memory"
+        "temperature"
+        "backlight"
+        "battery"
+        "clock"
+        "custom/power"
+      ];
+
+    "idle_inhibitor" = {
+        format = "{icon}";
+        format-icons = {
+            activated = "";
+            deactivated = "";
+        };
+      };
+
+    "tray" = {
+      spacing = 10;
+    };
+
+    "clock" = {
+      tooltip-format = ''
+        <big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>
+      '';
+    };
+
+    "cpu" = {
+     format = "{usage}% ";
+    };
+
+    "memory" = {
+     format = "{}% "; 
+    };
+
+    "temperature" = {
+      critical-threshold = 80;
+      format = "{temperatureC}°C {icon}";
+      format_critical = "{temperatureC}°C ";
+      format-icons = ["" "" "" ""];
+    };
+     
+    };
+  };
 }
