@@ -73,8 +73,16 @@ in
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = ["nvidia"];
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  # Enable flatpaks.
+  # Then you will still have to add
+  # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];  
+  };
 
 
   services.greetd = {
@@ -140,6 +148,9 @@ in
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
+
+  # Magically make stuff faster by requesting optimizations
+  programs.gamemode.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
@@ -188,6 +199,8 @@ in
 
     fortune-kind
     cowsay
+
+    mangohud
   ];
 
   fonts.packages = with pkgs; [
