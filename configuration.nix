@@ -47,6 +47,14 @@ in
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  # Automatic deletion of old builds and nix store optimization.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimize.automatic = true;
+
   # Wayland setup.
   programs.hyprland = {
     enable = true;
@@ -85,6 +93,7 @@ in
   };
 
 
+  # TODO: Unfuck this. For some reason, the command is set to 'md'.
   services.greetd = {
     enable = true;
     settings = {
