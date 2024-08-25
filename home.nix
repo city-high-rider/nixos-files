@@ -47,6 +47,14 @@
     '';
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 24;
+    };
+  };
+
   programs.waybar = {
     enable = true;
     settings.mainBar = {
