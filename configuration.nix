@@ -3,41 +3,93 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+let
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  session = "${pkgs.hyprland}/bin/Hyprland";
+  username = "nick";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = ["nodev"];
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  # Use GRUB as the bootloader.
+  boot.loader.grub = {
+    enable = true;
+    devices = ["nodev"];
+    efiInstallAsRemovable = true;
+    efiSupport = true;
+    useOSProber = true;
+  };
 
+  # Support ZFS and request credentials on boot
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.requestEncryptionCredentials = true;
 
-  # Probably a security risk
-  boot.kernelParams = ["boot.shell_on_fail"];
+  # No fucking clue what the second one does, but sound doesn't work without it.
+  boot.kernelParams = ["boot.shell_on_fail" "snd-intel-dspcfg.dsp_driver=1"];
 
-  networking.hostId = "34e0980c";
+  # Use ZFS auto scrub
   services.zfs.autoScrub.enable = true;
+  # enable TLP for laptop battery
+  services.tlp.enable = true;
 
-  # No fucking idea what this does.
-  boot.zfs.devNodes = "/dev/disk/by-partuuid";
+  # HostID for ZFS
+  networking.hostId = "81fab459";
 
-  networking.hostName = "znarpy"; # Define your hostname.
+  networking.hostName = "omen15"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  # Wayland setup.
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true; 
+  };
+
+  environment.sessionVariables = {
+   # If your cursor gets invisible
+   WLR_NO_HARDWARE_CURSORS = "1"; 
+   # Hint electron apps to use wayland
+   NIXOS_OZONE_WL = "1";
+  };
+
+  hardware = {
+   graphics = {
+    enable = true;
+  };
+
+   # Most wayland compositors need this
+   nvidia.modesetting.enable = true; 
+  };
+
+  # Enables drivers for x and wayland, despite the name
+  nixpkgs.config.allowUnfree = true;
+  services.xserver.videoDrivers = ["nvidia"];
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${session}";
+        user = "${username}";
+      };
+      default_session = {
+        command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd ${session}";
+        user = "greeter";
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Pacific/Auckland";
@@ -58,9 +110,6 @@
   # services.xserver.enable = true;
 
 
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
   
 
   # Configure keymap in X11
@@ -73,44 +122,24 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
+  # sound.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
-  };
-
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
-    displayManager.defaultSession = "xfce";
-  };
-
-  # Enable flatpak. You will still need to do
-  # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  services.flatpak.enable = true;
-  # You need desktop portals to use flatpak too.
-  xdg.portal = {
-    # We want to use portals.
-    enable = true;
-    # We have to specify which implementation we want to use.
-    # You can use several, in case one implementation is lacking some
-    # functionalities. https://wiki.archlinux.org/title/XDG_Desktop_Portal
-    # May be wise to change this when I am on hardware.
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    # Use the gtk implementation as the default for everything?
-    config.common.default = "gtk";
+    jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sillycat = {
+  users.users.nick = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    initialPassword = "what";
+    initialPassword = "cats";
+    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       #firefox
       #tree
@@ -119,19 +148,40 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
     helix # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     home-manager
-    git
-    gh
+    (waybar.overrideAttrs (oldAttrs : {mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];}))
+    # Notification daemon
+    mako
+    libnotify
+
+    # Wallpaper daemon
+    swww
+
+    # Terminal emulator
+    kitty
+
+    # rofi on wayland
+    rofi-wayland
+
     firefox
-    texlive.combined.scheme-medium
-    texlab
-    evince
-    nil
-    cowsay
+
+    # Make sound work lol
+    sof-firmware
+    pavucontrol
+
+    # For changing screen brightness
+    brightnessctl
+
     fortune-kind
+    cowsay
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

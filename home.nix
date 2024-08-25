@@ -1,9 +1,11 @@
 {config,pkgs,...} : {
   home = {
-    username = "sillycat";
-    homeDirectory = "/home/sillycat";
+    username = "nick";
+    homeDirectory = "/home/nick";
     stateVersion = "24.05";
   };
+
+  fonts.fontconfig.enable = true;
 
   programs.helix = {
     enable = true;
@@ -45,4 +47,3 @@
     '';
   };
 }
-

@@ -1,27 +1,26 @@
 {
-  description = "My system config";
+  description = "My system configuration";
 
   inputs = {
-    nixpgs.url = "github:nixos/nixpkgs/nixos-24.05";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {nixpkgs, home-manager,...} :
-    let
-      system = "x86_64-linux";
-    in {
-    nixosConfigurations.znarpy = nixpkgs.lib.nixosSystem {
+  outputs = {nixpkgs,home-manager,...} :
+  let
+    system = "x86_64-linux";
+  in {
+    nixosConfigurations.omen15 = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [./configuration.nix];
     };
 
-    homeConfigurations.sillycat = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./home.nix];
+    homeConfigurations.nick = home-manager.lib.homeManagerConfiguration {
+     pkgs = nixpkgs.legacyPackages.${system}; 
+     modules = [./home.nix];
     };
   };
 }
