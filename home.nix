@@ -412,6 +412,11 @@
         "custom/power"
       ];
 
+    # TODO: Make the selected workspace glow or something
+    "hyprland/window" = {
+        icon = true;
+    };
+
     "idle_inhibitor" = {
         format = "{icon}";
         format-icons = {
