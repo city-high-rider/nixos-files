@@ -181,6 +181,11 @@ in
     # For changing screen brightness
     brightnessctl
 
+    # Screenshotting
+    grim
+    slurp
+    swappy
+
     fortune-kind
     cowsay
   ];
