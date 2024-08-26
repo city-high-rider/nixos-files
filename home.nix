@@ -53,6 +53,10 @@
       name = "JetBrainsMono Nerd Font";
       size = 24;
     };
+    settings = {
+        background_opacity = "0.6";
+        background_blur = 16;
+    };
   };
 
   programs.waybar = {
