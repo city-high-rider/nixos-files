@@ -53,7 +53,7 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-  nix.optimize.automatic = true;
+  nix.optimise.automatic = true;
 
   # Wayland setup.
   programs.hyprland = {
@@ -188,6 +188,9 @@ in
 
     # Terminal emulator
     kitty
+
+    # Color picker
+    hyprpicker
 
     # rofi on wayland
     rofi-wayland
