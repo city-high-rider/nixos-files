@@ -210,7 +210,7 @@ in {
 
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
-        "$menu" = ''rofi -show combi -modes combi -combi-modes "window,drun" -show-icons'';
+        "$menu" = ''rofi -show combi -modes combi -combi-modes "window,drun" -show-icons -display-combi "I want a ..."'';
 
         exec-once = "${startupScript}/bin/start";
 
