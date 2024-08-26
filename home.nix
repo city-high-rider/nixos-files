@@ -64,11 +64,11 @@ in {
   # Notification daemon.
   services.mako = {
     enable = true;
-    borderColor = "${csh.primary}";
+    borderColor = "#${csh.primary}";
     borderRadius = 8;
     borderSize = 4;
-    backgroundColor = "${csh.neutral}";
-    textColor = "${csh.dark}";
+    backgroundColor = "#${csh.base02}";
+    textColor = "#${csh.base06}";
   };
 
   wayland.windowManager.hyprland = let
@@ -102,12 +102,12 @@ in {
         general = {
           gaps_in = 5;
           gaps_out = 20;
-          border_size = 2;
+          border_size = 3;
           resize_on_border = false;
           allow_tearing = false;
           layout = "dwindle";
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          "col.active_border" = "rgba(${csh.primaryNeon}ee) rgba(${csh.secondaryNeon}ee) 45deg";
+          "col.inactive_border" = "rgba(${csh.base03}aa)";
         };
         animations = {
             enabled = true;
