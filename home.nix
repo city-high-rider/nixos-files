@@ -1,4 +1,6 @@
-{config,pkgs,...} : {
+{config,pkgs,...} : let
+     csh = import ./beigegreen.nix;
+in {
   home = {
     username = "nick";
     homeDirectory = "/home/nick";
@@ -57,6 +59,16 @@
         background_opacity = "0.6";
         background_blur = 16;
     };
+  };
+
+  # Notification daemon.
+  services.mako = {
+    enable = true;
+    borderColor = "${csh.primary}";
+    borderRadius = 8;
+    borderSize = 4;
+    backgroundColor = "${csh.neutral}";
+    textColor = "${csh.dark}";
   };
 
   programs.waybar = {
