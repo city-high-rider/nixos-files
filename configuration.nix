@@ -3,11 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  session = "${pkgs.hyprland}/bin/Hyprland";
-  username = "nick";
-in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -94,7 +90,12 @@ in
 
 
   # TODO: Unfuck this. For some reason, the command is set to 'md'.
-  services.greetd = {
+  services.greetd =
+    let
+      tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+      session = "${pkgs.hyprland}/bin/Hyprland";
+      username = "nick";
+    in {
     enable = true;
     settings = {
       initial_session = {
@@ -160,6 +161,9 @@ in
 
   # Magically make stuff faster by requesting optimizations
   programs.gamemode.enable = true;
+
+  # For hyprlock to work https://mynixos.com/home-manager/option/programs.hyprlock.enable
+  security.pam.services.hyprlock = {};
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
