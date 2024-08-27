@@ -19,7 +19,7 @@ rec {
   base04 = "9E5E33";
   base05 = "9F7D51";
   base06 = "44200B";
-  base07 = "554f43";
+  base07 = "554F43";
   base08 = "FB4934";
   base09 = "FE8019";
   base0A = "FABD2F";
@@ -33,7 +33,9 @@ rec {
   # I want the primary color to be green, and the secondary to be cyan.
   # The neon ones are used when you really need to stand out, such as on hyprland borders
   primary = base0B;
+  primaryLighter = "ABE9B3";
   primaryNeon = "95ED42";
   secondary = base0C; 
+  secondaryLighter = "96CDFB";
   secondaryNeon = "49C7E3";
 }
