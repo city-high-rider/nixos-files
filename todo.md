@@ -22,7 +22,7 @@ Things that aren't strictly neccesary, but are nice to have.
 - `(+)` Discord
 - `(-)` Prism Launcher
 - `(+)` Lock screen utility
-- `(-)` Shutdown menu on waybar
+- `(+)` Shutdown menu on waybar
 
 ## Customizations and preferences
 
