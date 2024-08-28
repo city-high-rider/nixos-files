@@ -42,6 +42,9 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # NM applet so I don't have to use the CLI to manage
+  # network connections.
+  programs.nm-applet.enable = true;
 
   # Automatic deletion of old builds and nix store optimization.
   nix.gc = {
@@ -217,6 +220,8 @@
     cowsay
 
     mangohud
+
+    unzip
   ];
 
   fonts.packages = with pkgs; [
