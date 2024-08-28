@@ -395,7 +395,7 @@ window#waybar.hidden {
       format = "⏻";
   		tooltip = false;
 			on-click = ''
-				rofi -show session-menu -modi "session-menu:rofi-power-menu --choices=shutdown/reboot/logout/lockscreen"
+				rofi -show session-menu -modi "session-menu:rofi-power-menu --choices=shutdown/reboot/suspend/lockscreen"
 			'';
 		};
     };
