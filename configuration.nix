@@ -91,6 +91,13 @@
       ];  
   };
 
+  # Logind handles what happens when laptop lid is closed.
+  # https://nixos.wiki/wiki/Logind
+  # I want hyprland to detect these events and do stuff, so...
+  services.logind = {
+    lidSwitch = "ignore";
+  };
+
 
   # TODO: Unfuck this. For some reason, the command is set to 'md'.
   services.greetd =

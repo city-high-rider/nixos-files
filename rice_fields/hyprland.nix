@@ -144,6 +144,19 @@ in {
             "$mainMod, mouse:273, resizewindow"
         ];
 
+        bindl = [
+          # Lock screen when laptop lid is closed.
+          ",switch:Lid Switch, exec, loginctl lock-session"
+          # turn off laptop screen when we close the lid.
+          ''
+          ,switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
+          ''
+          # And turn it back on when we open it.
+          ''
+          ,switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,1920x1080,0x0,1"
+          ''
+        ];
+
         windowrulev2 = [
          "suppressevent maximize, class:.* # You'll probably like this."   
         ];
