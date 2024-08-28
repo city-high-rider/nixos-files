@@ -10,7 +10,7 @@ These are things that I either need for the computer to work properly or to get 
 - `(+)` Browser
 - `(+)` Terminal emulator
 - `(+)` Version control (git) for the config files, in case I fuck something up
-- `(-)` Jupyter notebook (for uni)
+- `(+)` Jupyter notebook (for uni)
 - `(-)` LaTeX environment
 - `(-)` Haskell environment
 
@@ -21,13 +21,13 @@ Things that aren't strictly neccesary, but are nice to have.
 - `(+)` Flatpak
 - `(+)` Discord
 - `(-)` Prism Launcher
-- `(-)` Lock screen utility
+- `(+)` Lock screen utility
 - `(-)` Shutdown menu on waybar
 
 ## Customizations and preferences
 
-- `(-)` Rofi
-- `(-)` Waybar
-- `(-)` Color scheme modules
-- `(-)` Move hyprland config to home-manager
-- `(-)` Modularize config
+- `(+)` Rofi
+- `(+)` Waybar
+- `(+)` Color scheme modules
+- `(+)` Move hyprland config to home-manager
+- `(+)` Modularize config
