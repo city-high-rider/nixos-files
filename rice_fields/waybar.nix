@@ -258,13 +258,14 @@ window#waybar.hidden {
 	margin-left: 8px;
 	margin-right: 8px;
 	padding-left: 10px;
-	padding-right: 5px;
+	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
 	color: #${csh.base06};
 	background: #${csh.primaryLighter};
 }
     '';
+    # TODO: Make the buttons have a cool effect on hover / press.
     settings.mainBar = {
       layer = "top";
       position  = "top";
@@ -390,8 +391,6 @@ window#waybar.hidden {
       on-click = "pavucontrol" ;
     };
 
-    # TODO: I still should write some scripts for this.
-    # Maybe use rofi? https://github.com/Alexays/Waybar/wiki/Module:-Custom
     "custom/power" = {
       format = "⏻";
   		tooltip = false;
