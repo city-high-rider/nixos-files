@@ -22,7 +22,7 @@ in {
             fg2 = mkLiteral "#${csh.base04}";
             fg3 = mkLiteral "#${csh.base02}";
 
-            font =   "Roboto 12";
+            font =   "JetBrains Mono NF 12";
 
             background-color =   mkLiteral "transparent";
             text-color =         mkLiteral "@fg0";
