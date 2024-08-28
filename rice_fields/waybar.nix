@@ -393,8 +393,11 @@ window#waybar.hidden {
     # TODO: I still should write some scripts for this.
     # Maybe use rofi? https://github.com/Alexays/Waybar/wiki/Module:-Custom
     "custom/power" = {
-      format = "⏻ ";
+      format = "⏻";
   		tooltip = false;
+			on-click = ''
+				rofi -show session-menu -modi "session-menu:rofi-power-menu --choices=shutdown/reboot/logout/lockscreen"
+			'';
 		};
     };
   };
