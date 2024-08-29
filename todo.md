@@ -31,3 +31,6 @@ Things that aren't strictly neccesary, but are nice to have.
 - `(+)` Color scheme modules
 - `(+)` Move hyprland config to home-manager
 - `(+)` Modularize config
+- `(-)` Consistent cursor theme on hyprland
+- `(-)` Fix weirdness when suspending computer (hyprland crashes)
+
