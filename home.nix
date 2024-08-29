@@ -146,7 +146,7 @@ in {
         # 30s later, turn off the screen.
         { timeout = 330;
           on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
         }
       ]; 
     };
