@@ -87,6 +87,12 @@ in {
             # Brightness keys for the laptop
             ",XF86MonBrightnessUp, exec, brightnessctl set +10%"
             ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+            # Volume keys for the laptop
+            # The -l flag is limit. I don't want to exceed 100%.
+            ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+            ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
+            ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
             "$mainMod, RETURN, exec, $terminal"
             "$mainMod SHIFT, Q, killactive,"
