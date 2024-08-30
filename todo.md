@@ -23,6 +23,10 @@ Things that aren't strictly neccesary, but are nice to have.
 - `(-)` Prism Launcher
 - `(+)` Lock screen utility
 - `(+)` Shutdown menu on waybar
+- `(-)` Working screenshare (E.G on discord)
+- `(-)` Fix mako not picking up discord notifications. Check that it works for other notifs. too.
+- `(-)` Music player. Perhaps move (and organize) downloaded music from my phone. It would be nice if it worked with spotify or something too.
+- `(-)` Bluetooth support.
 
 ## Customizations and preferences
 
@@ -32,5 +36,8 @@ Things that aren't strictly neccesary, but are nice to have.
 - `(+)` Move hyprland config to home-manager
 - `(+)` Modularize config
 - `(-)` Consistent cursor theme on hyprland
+- `(-)` Make waybar buttons have cool effects on hover / press.
 - `(-)` Fix weirdness when suspending computer (hyprland crashes)
+- `(-)` Perhaps make moving windows more ergonomic on a trackpad.
+- `(-)` Rice hyprlock
 
