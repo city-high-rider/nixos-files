@@ -224,10 +224,16 @@
     slurp
     swappy
 
+    # video editor
+    davinci-resolve
+
     fortune-kind
     cowsay
 
+    # Games
     mangohud
+    prismlauncher
+
 
     unzip
   ];
