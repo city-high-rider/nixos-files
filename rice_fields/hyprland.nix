@@ -102,6 +102,9 @@ in {
             "$mainMod, P, pseudo, # dwindle"
             # bind = $mainMod, J, togglesplit, # dwindle
 
+            # Go fullscreen
+            "$mainMod, F, Fullscreen"
+
             # Screenshots
             ''$mainMod, x, exec, grim -g "$(slurp)" - | swappy -f -''
 
