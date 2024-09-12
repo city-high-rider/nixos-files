@@ -29,6 +29,11 @@ in {
     };
     languages = {
       language-server.texlab.config.texlab.build.onSave = true;
+      language = [{
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      }];
     };
   };
 

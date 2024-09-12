@@ -189,7 +189,10 @@
   # $ nix search wget
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
-    helix # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # Helix and nix language server.
+    helix
+    nil
+
     wget
     home-manager
     (waybar.overrideAttrs (oldAttrs : {mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];}))
