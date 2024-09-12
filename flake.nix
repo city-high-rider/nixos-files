@@ -9,18 +9,17 @@
     };
   };
 
-  outputs = {nixpkgs,home-manager,...} :
-  let
-    system = "x86_64-linux";
-  in {
-    nixosConfigurations.omen15 = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [./configuration.nix];
-    };
+  outputs = { nixpkgs, home-manager, ... }:
+    let system = "x86_64-linux";
+    in {
+      nixosConfigurations.omen15 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ ./configuration.nix ];
+      };
 
-    homeConfigurations.nick = home-manager.lib.homeManagerConfiguration {
-     pkgs = nixpkgs.legacyPackages.${system}; 
-     modules = [./home.nix];
+      homeConfigurations.nick = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home.nix ];
+      };
     };
-  };
 }

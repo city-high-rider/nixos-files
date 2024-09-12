@@ -5,10 +5,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
@@ -17,18 +16,18 @@
   # Use GRUB as the bootloader.
   boot.loader.grub = {
     enable = true;
-    devices = ["nodev"];
+    devices = [ "nodev" ];
     efiInstallAsRemovable = true;
     efiSupport = true;
     useOSProber = true;
   };
 
   # Support ZFS and request credentials on boot
-  boot.supportedFilesystems = ["zfs"];
+  boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
 
   # No fucking clue what the second one does, but sound doesn't work without it.
-  boot.kernelParams = ["boot.shell_on_fail" "snd-intel-dspcfg.dsp_driver=1"];
+  boot.kernelParams = [ "boot.shell_on_fail" "snd-intel-dspcfg.dsp_driver=1" ];
 
   # Use ZFS auto scrub
   services.zfs.autoScrub.enable = true;
@@ -41,7 +40,8 @@
   networking.hostName = "omen15"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
   # NM applet so I don't have to use the CLI to manage
   # network connections.
   programs.nm-applet.enable = true;
@@ -57,28 +57,26 @@
   # Wayland setup.
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true; 
+    xwayland.enable = true;
   };
 
   environment.sessionVariables = {
-   # If your cursor gets invisible
-   WLR_NO_HARDWARE_CURSORS = "1"; 
-   # Hint electron apps to use wayland
-   NIXOS_OZONE_WL = "1";
+    # If your cursor gets invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
   };
 
   hardware = {
-   graphics = {
-    enable = true;
-  };
+    graphics = { enable = true; };
 
-   # Most wayland compositors need this
-   nvidia.modesetting.enable = true; 
+    # Most wayland compositors need this
+    nvidia.modesetting.enable = true;
   };
 
   # Enables drivers for x and wayland, despite the name
   nixpkgs.config.allowUnfree = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable flatpaks.
   # Then you will still have to add
@@ -86,26 +84,20 @@
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-      ];  
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   # Logind handles what happens when laptop lid is closed.
   # https://nixos.wiki/wiki/Logind
   # I want hyprland to detect these events and do stuff, so...
-  services.logind = {
-    lidSwitch = "ignore";
-  };
-
+  services.logind = { lidSwitch = "ignore"; };
 
   # TODO: Unfuck this. For some reason, the command is set to 'md'.
-  services.greetd =
-    let
-      tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-      session = "${pkgs.hyprland}/bin/Hyprland";
-      username = "nick";
-    in {
+  services.greetd = let
+    tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+    session = "${pkgs.hyprland}/bin/Hyprland";
+    username = "nick";
+  in {
     enable = true;
     settings = {
       initial_session = {
@@ -113,7 +105,8 @@
         user = "${username}";
       };
       default_session = {
-        command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd ${session}";
+        command =
+          "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd ${session}";
         user = "greeter";
       };
     };
@@ -136,9 +129,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -164,30 +154,34 @@
   # services.libinput.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall =
+      true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall =
+      true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall =
+      true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
   # Magically make stuff faster by requesting optimizations
   programs.gamemode.enable = true;
 
   # For hyprlock to work https://mynixos.com/home-manager/option/programs.hyprlock.enable
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nick = {
     isNormalUser = true;
     initialPassword = "cats";
     extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      #firefox
-      #tree
-    ];
+    packages = with pkgs;
+      [
+        #firefox
+        #tree
+      ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     # Helix and nix language server.
     helix
@@ -195,7 +189,9 @@
 
     wget
     home-manager
-    (waybar.overrideAttrs (oldAttrs : {mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];}))
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }))
     # Notification daemon
     mako
     libnotify
@@ -237,13 +233,12 @@
     mangohud
     prismlauncher
 
-
     unzip
   ];
 
   fonts.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

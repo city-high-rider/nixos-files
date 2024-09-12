@@ -1,5 +1,5 @@
-{config,pkgs,...} : let
-     csh = import ./beigegreen.nix;
+{ config, pkgs, ... }:
+let csh = import ./beigegreen.nix;
 in {
 
   # I split up some programs with long config. files (namely rofi, hyprland, etc.) 
@@ -42,12 +42,8 @@ in {
     userName = "city-high-rider";
     userEmail = "60808209+city-high-rider@users.noreply.github.com";
     extraConfig.credential = {
-      "https://github.com/" = {
-        helper = "!gh auth git-credential";
-      };
-      "https://gist.github.com/" = {
-        helper = "!gh auth git-credential";
-      };
+      "https://github.com/" = { helper = "!gh auth git-credential"; };
+      "https://gist.github.com/" = { helper = "!gh auth git-credential"; };
     };
   };
 
@@ -70,8 +66,8 @@ in {
       size = 24;
     };
     settings = {
-        background_opacity = "0.6";
-        background_blur = 16;
+      background_opacity = "0.6";
+      background_blur = 16;
     };
   };
 
@@ -79,38 +75,34 @@ in {
   programs.hyprlock = {
     enable = true;
     settings = {
-        general = {
+      general = {
         disable_loading_bar = true;
         hide_cursor = true;
         no_fade_in = false;
         ignore_empty_input = false;
       };
 
-      background = [
-        {
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-        }
-      ];
+      background = [{
+        path = "screenshot";
+        blur_passes = 3;
+        blur_size = 8;
+      }];
 
-      input-field = [
-        {
-          size = "200, 50";
-          position = "0, -80";
-          monitor = "";
-          dots_center = true;
-          fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text =  ''
+      input-field = [{
+        size = "200, 50";
+        position = "0, -80";
+        monitor = "";
+        dots_center = true;
+        fade_on_empty = false;
+        font_color = "rgb(202, 211, 245)";
+        inner_color = "rgb(91, 96, 120)";
+        outer_color = "rgb(24, 25, 38)";
+        outline_thickness = 5;
+        placeholder_text = ''
           <span foreground="##cad3f5">Password...</span>
-          '';
-          shadow_passes = 2;
-        }
-      ]; 
+        '';
+        shadow_passes = 2;
+      }];
     };
   };
 
@@ -138,22 +130,25 @@ in {
       };
       listener = [
         # After 2min, dim the screen.
-        { timeout = 150;
+        {
+          timeout = 150;
           # Save old level, set to 10.
           on-timeout = "brightnessctl -s set 10";
           # Restore light level
           on-resume = "brightnessctl -r";
         }
         # Lock screen after 5 mins
-        { timeout = 300;
+        {
+          timeout = 300;
           on-timeout = "loginctl lock-session";
         }
         # 30s later, turn off the screen.
-        { timeout = 330;
+        {
+          timeout = 330;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
-      ]; 
+      ];
     };
   };
 
