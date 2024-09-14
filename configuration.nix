@@ -71,7 +71,10 @@
     graphics = { enable = true; };
 
     # Most wayland compositors need this
-    nvidia.modesetting.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    };
   };
 
   # Enables drivers for x and wayland, despite the name
