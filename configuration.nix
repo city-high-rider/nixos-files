@@ -74,6 +74,8 @@
     nvidia = {
       modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
+      # Use open-source kernel module?
+      open = false;
     };
   };
 
