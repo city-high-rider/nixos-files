@@ -8,6 +8,7 @@ in {
     ./rice_fields/rofi.nix
     ./rice_fields/hyprland.nix
     ./rice_fields/waybar.nix
+    ./music-player.nix
   ];
 
   home = {
