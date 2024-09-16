@@ -16,6 +16,8 @@ in {
     stateVersion = "24.05";
   };
 
+  xdg.userDirs.enable = true;
+
   fonts.fontconfig.enable = true;
 
   programs.helix = {

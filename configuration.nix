@@ -200,6 +200,8 @@
     # Notification daemon
     mako
     libnotify
+    # for setting XDG dirs.
+    xdg-user-dirs
 
     # Wallpaper daemon
     swww
@@ -230,6 +232,8 @@
 
     # video editor
     davinci-resolve
+    # Media player
+    mpv
 
     fortune-kind
     cowsay
@@ -239,6 +243,8 @@
     prismlauncher
 
     unzip
+
+    warp
   ];
 
   fonts.packages = with pkgs; [
