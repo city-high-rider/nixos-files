@@ -225,7 +225,7 @@ in {
       	border-radius: 10px;
       	transition: none;
       	color: #${csh.base06};
-      	background: #${csh.base03};
+      	background: #${csh.base01};
       }
       #cpu {
       	margin-top: 3px;
@@ -236,7 +236,7 @@ in {
       	border-radius: 10px;
       	transition: none;
       	color: #${csh.base06};
-      	background: #${csh.base02};
+      	background: #${csh.base00};
       }
 
       #tray {
@@ -248,11 +248,23 @@ in {
       	border-radius: 10px;
       	transition: none;
       	color: #B5E8E0;
-      	background: #${csh.base06};
+      	background: #${csh.base02};
+      }
+
+      #mpd {
+      	margin-top: 3px;
+      	margin-bottom: 3px;
+      	margin-left: 8px;
+      	padding-left: 10px;
+      	padding-right: 10px;
+      	border-radius: 10px;
+      	transition: none;
+      	color: #${csh.base06};
+      	background: #${csh.base03};
       }
 
       #custom-power {
-      	font-size: 20px;
+      	font-size: 15px;
       	margin-top: 3px;
       	margin-bottom: 3px;
       	margin-left: 8px;
@@ -271,7 +283,7 @@ in {
       position = "top";
       height = 30;
       spacing = "4px";
-      modules-left = [ "custom/power" "cpu" "memory" "tray" ];
+      modules-left = [ "custom/power" "cpu" "memory" "tray" "mpd" ];
       modules-center = [ "hyprland/workspaces" ];
       modules-right = [
         # "idle_inhibitor"
@@ -295,6 +307,31 @@ in {
       };
 
       "tray" = { spacing = 10; };
+
+      "mpd" = {
+        format =
+          "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}-{title}";
+        format-disconnected = "Disconnected ";
+        format-stopped =
+          "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
+        interval = 10;
+        consume-icons = {
+          on = " "; # Icon shows only when "consume" is on
+        };
+        random-icons = {
+          off = ''
+            <span color="#${csh.base08}"></span> ''; # Icon grayed out when "random" is off
+          on = " ";
+        };
+        repeat-icons = { on = " "; };
+        single-icons = { on = "1 "; };
+        state-icons = {
+          paused = "";
+          playing = "";
+        };
+        tooltip-format = "MPD (connected)";
+        tooltip-format-disconnected = "MPD (disconnected)";
+      };
 
       "clock" = {
         format = "{:%H:%M}  ";
