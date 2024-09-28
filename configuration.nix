@@ -245,6 +245,9 @@
     unzip
 
     warp
+
+    # Mouse tweaks for g502
+    piper
   ];
 
   fonts.packages = with pkgs; [
@@ -261,6 +264,7 @@
   # };
 
   # List services that you want to enable:
+  services.ratbagd.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
