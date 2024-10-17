@@ -230,6 +230,9 @@
     slurp
     swappy
 
+    # Simple photo editor
+    pinta
+
     # video editor
     davinci-resolve
     # Media player
@@ -248,6 +251,9 @@
 
     # Mouse tweaks for g502
     piper
+
+    # For mounting external USB drives
+    pmount
   ];
 
   fonts.packages = with pkgs; [
