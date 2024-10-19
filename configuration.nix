@@ -251,9 +251,6 @@
 
     # Mouse tweaks for g502
     piper
-
-    # For mounting external USB drives
-    pmount
   ];
 
   fonts.packages = with pkgs; [
@@ -271,6 +268,11 @@
 
   # List services that you want to enable:
   services.ratbagd.enable = true;
+
+  # For automounting USBS
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
