@@ -25,7 +25,11 @@ in {
 
       exec-once = "${startupScript}/bin/start";
 
-      env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
+      env = [
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+      ];
 
       general = {
         gaps_in = 5;
