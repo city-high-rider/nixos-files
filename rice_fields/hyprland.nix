@@ -125,6 +125,20 @@ in {
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
 
+        # Move windows around with mod+shift
+        "$mainMod SHIFT, h, movewindoworgroup, l"
+        "$mainMod SHIFT, l, movewindoworgroup, r"
+        "$mainMod SHIFT, k, movewindoworgroup, u"
+        "$mainMod SHIFT, j, movewindoworgroup, d"
+
+        "$mainMod, a, togglegroup"
+
+        # Switch and move in groups with mod i and o.
+        "$mainMod, i, changegroupactive, b"
+        "$mainMod, o, changegroupactive, f"
+        "$mainMod SHIFT, i, movegroupwindow, b"
+        "$mainMod SHIFT, o, movegroupwindow, f"
+
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
