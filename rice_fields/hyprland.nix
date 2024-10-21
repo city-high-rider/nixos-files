@@ -194,6 +194,13 @@ in {
       windowrulev2 =
         [ "suppressevent maximize, class:.* # You'll probably like this." ];
 
+      group.groupbar = {
+        text_color = "0xff${csh.base07}";
+        font_size = 10;
+        "col.active" = "0xff${csh.primaryLighter}";
+        "col.inactive" = "0xff${csh.secondaryLighter}";
+      };
+
       decoration = {
         rounding = 10;
 
