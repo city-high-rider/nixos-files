@@ -251,6 +251,9 @@
 
     # Mouse tweaks for g502
     piper
+
+    # Matrix client
+    iamb
   ];
 
   fonts.packages = with pkgs; [
