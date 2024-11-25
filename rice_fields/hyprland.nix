@@ -28,11 +28,11 @@ in {
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        # "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        # "LIBVA_DRIVER_NAME,nvidia"
+        # "XDG_SESSION_TYPE,wayland"
+        # "GBM_BACKEND,nvidia-drm"
+        # "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
 
       cursor = { no_hardware_cursors = true; };
@@ -132,6 +132,7 @@ in {
         "$mainMod SHIFT, j, movewindoworgroup, d"
 
         "$mainMod, a, togglegroup"
+        "$mainMod, u, togglefloating"
 
         # Switch and move in groups with mod i and o.
         "$mainMod, i, changegroupactive, b"
@@ -208,10 +209,11 @@ in {
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
