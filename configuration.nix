@@ -97,7 +97,6 @@
   # I want hyprland to detect these events and do stuff, so...
   services.logind = { lidSwitch = "ignore"; };
 
-  # TODO: Unfuck this. For some reason, the command is set to 'md'.
   services.greetd = let
     tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
     session = "${pkgs.hyprland}/bin/Hyprland";
@@ -154,6 +153,16 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  # Enable bluetooth support
+  hardware.bluetooth = {
+    enable = true;
+    # I want to explicitly have to turn bluetooth on, since I don't
+    # use it often, and leaving it on wastes battery.
+    powerOnBoot = false;
+  };
+  # For having bluetooth GUI
+  services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
