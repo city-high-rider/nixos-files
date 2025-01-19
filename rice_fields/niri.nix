@@ -12,7 +12,7 @@ in {
       # TODO: Brightness keys
 
       "Mod+D".action = spawn "fuzzel";
-      "Mod+Enter".action = spawn "kitty";
+      "Mod+Return".action = spawn "kitty";
 
       "Mod+Shift+E".action = quit { skip-confirmation = false; };
 
@@ -20,12 +20,15 @@ in {
 
       "Mod+Q".action = close-window;
 
+      # NOTE: I am using delete key instead of home
+      # because my keyboard layout is fucking weird
+
       # Window focus
       "Mod+H".action = focus-column-left;
       "Mod+J".action = focus-window-down;
       "Mod+K".action = focus-window-up;
       "Mod+L".action = focus-column-right;
-      "Mod+Home".action = focus-column-first;
+      "Mod+Delete".action = focus-column-first;
       "Mod+End".action = focus-column-last;
 
       # Monitor focus
@@ -39,7 +42,7 @@ in {
       "Mod+Shift+J".action = move-window-down;
       "Mod+Shift+K".action = move-window-up;
       "Mod+Shift+L".action = move-column-right;
-      "Mod+Ctrl+Home".action = move-column-to-first;
+      "Mod+Ctrl+Delete".action = move-column-to-first;
       "Mod+Ctrl+End".action = move-column-to-last;
 
       # Monitor moving
