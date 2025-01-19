@@ -54,11 +54,9 @@
   };
   nix.optimise.automatic = true;
 
-  # Wayland setup.
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # Enable niri.
+  # This also enables the necessary system components for niri to function properly, such as desktop portals and polkit.
+  programs.niri = { enable = true; };
 
   environment.sessionVariables = {
     # If your cursor gets invisible
@@ -87,34 +85,11 @@
   # Then you will still have to add
   # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   services.flatpak.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-  };
 
   # Logind handles what happens when laptop lid is closed.
   # https://nixos.wiki/wiki/Logind
   # I want hyprland to detect these events and do stuff, so...
   services.logind = { lidSwitch = "ignore"; };
-
-  services.greetd = let
-    tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-    session = "${pkgs.hyprland}/bin/Hyprland";
-    username = "nick";
-  in {
-    enable = true;
-    settings = {
-      initial_session = {
-        command = "${session}";
-        user = "${username}";
-      };
-      default_session = {
-        command =
-          "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time --cmd ${session}";
-        user = "greeter";
-      };
-    };
-  };
 
   # Set your time zone.
   time.timeZone = "Pacific/Auckland";
