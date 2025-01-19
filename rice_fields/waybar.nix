@@ -66,6 +66,12 @@ in {
       #temperature {
         color: #eed49f;
       }
+      #cpu {
+        color: #eed49f;
+      }
+      #memory {
+        color: #eed49f;
+      }
       #clock {
         font-weight: 600;
         color: #8bd5ca;
@@ -93,7 +99,15 @@ in {
       spacing = 2;
       modules-left = [ "clock" "custom/sep" "battery" "custom/sep" "tray" ];
       modules-center = [ "niri/workspaces" ];
-      modules-right = [ "temperature" "custom/sep" "pulseaudio" ];
+      modules-right = [
+        "cpu"
+        "custom/sep"
+        "memory"
+        "custom/sep"
+        "temperature"
+        "custom/sep"
+        "pulseaudio"
+      ];
       "custom/sep" = { format = ""; };
       "niri/workspaces" = {
         format = "{icon}";
@@ -120,6 +134,14 @@ in {
         critical-threshold = 80;
         format = "{icon} {temperatureC}°C";
         format-icons = [ "" "" "" ];
+      };
+      cpu = {
+        rotate = 90;
+        format = "{usage}%   ";
+      };
+      memory = {
+        rotate = 90;
+        format = "{}%  ";
       };
       pulseaudio = {
         rotate = 90;
