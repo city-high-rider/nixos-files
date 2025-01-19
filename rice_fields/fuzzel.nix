@@ -10,7 +10,7 @@ in {
       prompt = "I want a... ";
     };
     colors = {
-      background = "{csh.base01}f2";
+      background = "${csh.base01}f2";
       prompt = "${csh.primary}f2";
       selection-match = "${csh.secondary}f2";
       match = "${csh.secondary}f2";
