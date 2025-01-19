@@ -196,10 +196,6 @@
     # Color picker
     hyprpicker
 
-    # rofi on wayland
-    rofi-wayland
-    rofi-power-menu
-
     firefox
 
     # Make sound work lol
