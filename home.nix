@@ -5,9 +5,10 @@ in {
   # I split up some programs with long config. files (namely rofi, hyprland, etc.) 
   # Here I import them.
   imports = [
-    ./rice_fields/hyprland.nix
-    ./rice_fields/waybar.nix
     ./rice_fields/fuzzel.nix
+    ./rice_fields/hyprland.nix
+    ./rice_fields/niri.nix
+    ./rice_fields/waybar.nix
     ./music-player.nix
   ];
 
