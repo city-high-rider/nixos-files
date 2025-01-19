@@ -4,8 +4,12 @@ in {
 
   # I split up some programs with long config. files (namely rofi, hyprland, etc.) 
   # Here I import them.
-  imports =
-    [ ./rice_fields/hyprland.nix ./rice_fields/waybar.nix ./music-player.nix ];
+  imports = [
+    ./rice_fields/hyprland.nix
+    ./rice_fields/waybar.nix
+    ./rice_fields/fuzzel.nix
+    ./music-player.nix
+  ];
 
   home = {
     username = "nick";
