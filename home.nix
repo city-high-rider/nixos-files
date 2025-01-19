@@ -64,6 +64,8 @@ in {
     '';
   };
 
+  programs.fish.enable = true;
+
   programs.kitty = {
     enable = true;
     font = {
@@ -73,7 +75,9 @@ in {
     settings = {
       background_opacity = "0.6";
       background_blur = 16;
+      shell = "fish";
     };
+    shellIntegration.enableFishIntegration = true;
   };
 
   # Hyprlock, screen locking utility.
