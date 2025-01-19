@@ -2,7 +2,8 @@
 let csh = import ./beigegreen.nix;
 in {
   programs.niri.settings = {
-    spawn-at-startup = [{ command = [ "waybar" ]; }];
+    spawn-at-startup =
+      [ { command = [ "waybar" ]; } { command = [ "mako" ]; } ];
     binds = with config.lib.niri.actions; {
       # Volume keys
       "XF86AudioRaiseVolume".action.spawn =
