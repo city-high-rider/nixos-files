@@ -91,7 +91,7 @@ in {
       width = 28;
       margin = "2 0 2 2";
       spacing = 2;
-      modules-left = [ "clock" "custom/sep" "tray" ];
+      modules-left = [ "clock" "custom/sep" "battery" "custom/sep" "tray" ];
       modules-center = [ "niri/workspaces" ];
       modules-right = [ "temperature" "custom/sep" "pulseaudio" ];
       "custom/sep" = { format = ""; };
@@ -123,8 +123,8 @@ in {
       };
       pulseaudio = {
         rotate = 90;
-        format = "{icon} {volume}%";
-        format-bluetooth = "{icon} {volume}%";
+        format = "{icon}   {volume}%";
+        format-bluetooth = "{icon}   {volume}%";
         format-muted = "MUTE ";
         format-icons = {
           headphones = "";
@@ -135,6 +135,13 @@ in {
           car = "";
           default = [ "" "" ];
         };
+      };
+      battery = {
+        rotate = 90;
+        format = "{icon}  {capacity}";
+        format-charging = "{icon}  {capacity}";
+        tooltip = "{timeTo}";
+        format-icons = [ "" "" "" "" "" ];
       };
       scroll-step = 3;
       on-click = "pavucontrol";
