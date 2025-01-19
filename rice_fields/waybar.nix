@@ -7,418 +7,138 @@ in {
     enable = true;
     style = ''
       * {
-      	border: none;
-      	border-radius: 10;
-          font-family: "JetbrainsMono Nerd Font" ;
-      	font-size: 15px;
-      	min-height: 10px;
+        border: none;
+        font-family: "Hack", "Font Awesome 6 Pro";
+        font-size: 14px;
+        font-weight: 600;
+        background: none;
       }
 
       window#waybar {
-      	background: transparent;
+        color: #a5adcb;
+      }
+      .modules-left,
+      .modules-right,
+      .modules-center {
+        border-radius: 6px;
+        background: #181926;
+        padding: 12px 0;
+      }
+      tooltip {
+        color: #a5adcb;
+        background-color: #181926;
+        text-shadow: none;
       }
 
-      window#waybar.hidden {
-      	opacity: 0.2;
+      tooltip * {
+        color: #a5adcb;
+        text-shadow: none;
       }
 
-      #window {
-      	margin-top: 6px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-          color: transparent;
-      	background: transparent;
+      #custom-sep {
+        color: #494d64;
+        margin: 4px 0;
       }
-
-      #tags {
-      	margin-top: 6px;
-      	margin-left: 12px;
-      	font-size: 4px;
-      	margin-bottom: 0px;
-      	border-radius: 10px;
-      	background: #${csh.base06};
-      	transition: none;
+      #workspaces,
+      #clock,
+      #custom-bluetooth_devices,
+      #custom-powermenu,
+      #pulseaudio,
+      #tray {
       }
-
-      #tags button {
-      	transition: none;
-      	color: #B5E8E0;
-      	background: transparent;
-      	font-size: 16px;
-      	border-radius: 2px;
-      }
-
-      #tags button.occupied {
-      	transition: none;
-      	color: #F28FAD;
-      	background: transparent;
-      	font-size: 4px;
-      }
-
-      #tags button.focused {
-      	color: #ABE9B3;
-          border-top: 2px solid #ABE9B3;
-          border-bottom: 2px solid #ABE9B3;
-      }
-
-      #tags button:hover {
-      	transition: none;
-      	box-shadow: inherit;
-      	text-shadow: inherit;
-      	color: #FAE3B0;
-          border-color: #E8A2AF;
-          color: #E8A2AF;
-      }
-
-      #tags button.focused:hover {
-          color: #E8A2AF;
-      }
-
-
-      .modules-right {
-        padding-left: 5px;
-      	padding-right: 5px;
-        border-radius: 15px 0 0 15px;
-        margin-top: 2px;
-        background: rgba(0,0,0,0.4);
-      }
-
-      .modules-left {
-        padding-left: 5px;
-      	padding-right: 5px;
-        border-radius: 0 15px 15px 0;
-        margin-top: 2px;
-        background: rgba(0,0,0,0.4);
-      }
-
       #workspaces {
-      	border: 2px solid #${csh.primary};
-      	border-radius: 10px;
-      	background-color: #${csh.base07};
+        border-radius: 4px;
       }
-
       #workspaces button {
-          padding: 0 5px;
-          color: #ffffff;
+        color: #5b6078;
+        background: none;
+        padding: 0;
       }
-
       #workspaces button:hover {
-          background: rgba(0, 0, 0, 0.2);
+        color: #a6da95;
       }
-
       #workspaces button.active {
-      	background-color: #${csh.secondary};
+        color: #f5bde6;
       }
-
       #workspaces button.focused {
-          background-color: #64727D;
-          box-shadow: inset 0 -3px #ffffff;
+        color: #ff0000;
       }
-
-      #workspaces button.urgent {
-          background-color: #eb4d4b;
-      }
-
-      #network {
-      	margin-top: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	margin-bottom: 3px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base02};
-      }
-
-      #pulseaudio {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base03};
-      }
-
-
       #temperature {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base01};
-      }
-
-      #battery {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #B5E8E0;
-      }
-
-      #battery.charging, #battery.plugged {
-      	color: #${csh.base06};
-          background-color: #B5E8E0;
-      }
-
-      #battery.critical:not(.charging) {
-          background-color: #B5E8E0;
-          color: #${csh.base06};
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-      }
-
-      @keyframes blink {
-          to {
-              background-color: #BF616A;
-              color: #B5E8E0;
-          }
-      }
-
-      #backlight {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base00};
+        color: #eed49f;
       }
       #clock {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.primaryLighter};
-      	/*background: #1A1826;*/
+        font-weight: 600;
+        color: #8bd5ca;
+      }
+      #custom-bluetooth_devices {
+        color: #8aadf4;
+      }
+      #pulseaudio {
+        color: #a6da95;
+      }
+      #pulseaudio.muted {
+        color: #ed8796;
       }
 
-      #memory {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base01};
-      }
-      #cpu {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base00};
-      }
-
-      #tray {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #B5E8E0;
-      	background: #${csh.base02};
-      }
-
-      #mpd {
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.base03};
-      }
-
-      #custom-power {
-      	font-size: 15px;
-      	margin-top: 3px;
-      	margin-bottom: 3px;
-      	margin-left: 8px;
-      	margin-right: 8px;
-      	padding-left: 10px;
-      	padding-right: 10px;
-      	border-radius: 10px;
-      	transition: none;
-      	color: #${csh.base06};
-      	background: #${csh.primaryLighter};
+      #custom-powermenu {
+        margin: 12px 0 0 0;
+        color: #6e738d;
       }
     '';
-    # TODO: Make the buttons have a cool effect on hover / press.
     settings.mainBar = {
       layer = "top";
-      position = "top";
-      height = 30;
-      spacing = "4px";
-      modules-left = [ "custom/power" "cpu" "memory" "tray" "mpd" ];
-      modules-center = [ "hyprland/workspaces" ];
-      modules-right = [
-        # "idle_inhibitor"
-        "pulseaudio"
-        "network"
-        "temperature"
-        "backlight"
-        "battery"
-        "clock"
-      ];
-
-      # TODO: Make the selected workspace glow or something
-      "hyprland/window" = { icon = true; };
-
-      "idle_inhibitor" = {
+      position = "left";
+      width = 28;
+      margin = "2 0 2 2";
+      spacing = 2;
+      modules-left = [ "clock" "custom/sep" "tray" ];
+      modules-center = [ "niri/workspaces" ];
+      modules-right = [ "temperature" "custom/sep" "pulseaudio" ];
+      "custom/sep" = { format = ""; };
+      "niri/workspaces" = {
         format = "{icon}";
         format-icons = {
-          activated = "";
-          deactivated = "";
+          active = "";
+          urgent = "";
+          default = "";
         };
       };
-
-      "tray" = { spacing = 10; };
-
-      "mpd" = {
-        format =
-          "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}-{title}";
-        format-disconnected = "Disconnected ";
-        format-stopped =
-          "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
-        interval = 10;
-        consume-icons = {
-          on = " "; # Icon shows only when "consume" is on
-        };
-        random-icons = {
-          off = ''
-            <span color="#${csh.base08}"></span> ''; # Icon grayed out when "random" is off
-          on = " ";
-        };
-        repeat-icons = { on = " "; };
-        single-icons = { on = "1 "; };
-        state-icons = {
-          paused = "";
-          playing = "";
-        };
-        tooltip-format = "MPD (connected)";
-        tooltip-format-disconnected = "MPD (disconnected)";
+      clock = {
+        tooltip = true;
+        format = ''
+          {:%H
+          %M}'';
+        tooltip-format = "{:%Y-%m-%d}";
       };
-
-      "clock" = {
-        format = "{:%H:%M}  ";
-        format-alt = "{:%A, %B %d, %Y (%R)}";
-        tooltip-format = "<tt><small>{calendar}</small></tt>";
-        calendar = {
-          mode = "year";
-          mode-mon-col = 3;
-          weeks-pos = "right";
-          on-scroll = 1;
-          # TODO: Change these colors
-          format = {
-            months = "<span color='#ffead3'><b>{}</b></span>";
-            days = "<span color='#ecc6d9'><b>{}</b></span>";
-            weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-            today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-          };
-        };
-        actions = {
-          on-click-right = "mode";
-          on-scroll-up = "shift_up";
-          on-scroll-down = "shift_down";
-        };
+      tray = {
+        icon-size = 18;
+        show-passive-items = "true";
       };
-
-      "cpu" = { format = "{usage}% "; };
-
-      "memory" = { format = "{}% "; };
-
-      "temperature" = {
+      temperature = {
+        rotate = 90;
+        hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
         critical-threshold = 80;
-        format = "{temperatureC}°C {icon}";
-        format_critical = "{temperatureC}°C ";
-        format-icons = [ "" "" "" "" ];
+        format = "{icon} {temperatureC}°C";
+        format-icons = [ "" "" "" ];
       };
-
-      "backlight" = {
-        format = "{percent}% {icon}";
-        format-icons = [ "" "" ];
-      };
-
-      "battery" = {
-        format = "{capacity}% {icon}";
-        format-charging = "{capacity}% ";
-        # format-plugged = "{capacity}% ";
-        # Empty label makes the widget disappear
-        format-full = "";
-        tooltip = "{timeTo}";
-        format-icons = [ "" "" "" "" "" ];
-      };
-
-      "network" = {
-        format-wifi = "{essid} ({signalStrength}%) ";
-        format-ethernet = "{ipaddr}/{cidr} ";
-        tooltip-format = "{ifname} via {gwaddr} ";
-        format-linked = "{ifname} (No IP) ";
-        format-disconnected = "Disconnected ⚠";
-        format-alt = "{ifname}: {ipaddr}/{cidr}";
-      };
-
-      "pulseaudio" = {
-        # "scroll-step": 1, %, can be a float
-        format = "{volume}% {icon} {format_source}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
-        format-source = "{volume}% ";
-        format-source-muted = "";
+      pulseaudio = {
+        rotate = 90;
+        format = "{icon} {volume}%";
+        format-bluetooth = "{icon} {volume}%";
+        format-muted = "MUTE ";
         format-icons = {
-          "headphone" = "";
-          "hands-free" = "";
-          "headset" = "";
-          "phone" = "";
-          "portable" = "";
-          "car" = "";
-          "default" = [ "" "" "" ];
+          headphones = "";
+          handsfree = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [ "" "" ];
         };
-        on-click = "pavucontrol";
       };
-
-      "custom/power" = {
-        format = "⏻";
-        tooltip = false;
-        on-click =
-          "	rofi -show session-menu -modi \"session-menu:rofi-power-menu --choices=shutdown/reboot/suspend/lockscreen\"\n";
-      };
+      scroll-step = 3;
+      on-click = "pavucontrol";
+      on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
     };
   };
 }
