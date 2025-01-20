@@ -1,5 +1,5 @@
 { config, ... }:
-let csh = import ./colorschemes/beigegreen.nix;
+let csh = import ./colorschemes/firewatch.nix;
 in {
   programs.niri.settings = {
     spawn-at-startup = [
