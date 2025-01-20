@@ -52,8 +52,8 @@ in {
         "Mod+Shift+J".action = move-window-down;
         "Mod+Shift+K".action = move-window-up;
         "Mod+Shift+L".action = move-column-right;
-        "Mod+Ctrl+Delete".action = move-column-to-first;
-        "Mod+Ctrl+End".action = move-column-to-last;
+        "Mod+Shift+Delete".action = move-column-to-first;
+        "Mod+Shift+End".action = move-column-to-last;
 
         # Monitor moving
         "Mod+Ctrl+Shift+H".action = move-column-to-monitor-left;
