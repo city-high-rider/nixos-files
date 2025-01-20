@@ -23,6 +23,9 @@ in {
 
         "Mod+D".action = spawn "fuzzel";
         "Mod+Return".action = spawn "kitty";
+        # This locks the screen. The 'pidof' part is there to avoid
+        # launching multiple instances of it.
+        "Mod+Alt+L".action = bsh "pidof hyprlock || hyprlock";
 
         "Mod+Shift+E".action = quit { skip-confirmation = false; };
 
