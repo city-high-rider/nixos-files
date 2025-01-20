@@ -187,6 +187,9 @@
     # Wallpaper daemon
     swww
 
+    # for running X apps on Niri
+    xwayland-satellite
+
     # Terminal emulator
     kitty
 

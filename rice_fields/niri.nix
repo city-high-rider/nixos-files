@@ -10,11 +10,14 @@ in {
       # Set wallpaper
       { command = [ "swww-daemon" ]; }
       { command = [ "swww" "img" "~/wallpapers/sunset.png" ]; }
+      { command = [ "xwayland-satellite" ]; }
     ];
     window-rules = [{
       matches = [ { is-active = true; } { app-id = "kitty"; } ];
       draw-border-with-background = false;
     }];
+    # For xwayland-satellite.
+    environment.DISPLAY = ":0";
     layout = {
       center-focused-column = "never";
       focus-ring = {
