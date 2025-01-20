@@ -1,5 +1,5 @@
 { config, ... }:
-let csh = import ./colorschemes/firewatch.nix;
+let csh = import ../colorschemes/firewatch.nix;
 in {
   programs.niri.settings = {
     spawn-at-startup = [
@@ -11,6 +11,28 @@ in {
       { command = [ "swww-daemon" ]; }
       { command = [ "swww" "img" "~/wallpapers/sunset.png" ]; }
     ];
+    window-rules = [{
+      matches = [ { is-active = true; } { app-id = "kitty"; } ];
+      draw-border-with-background = false;
+    }];
+    layout = {
+      center-focused-column = "never";
+      focus-ring = {
+        width = 4;
+        active.gradient = {
+          angle = 45;
+          in' = "srgb";
+          from = "${csh.primary}";
+          to = "${csh.primaryNeon}";
+        };
+        inactive.gradient = {
+          angle = 45;
+          in' = "srgb";
+          from = "${csh.base07}";
+          to = "${csh.base06}";
+        };
+      };
+    };
     binds = with config.lib.niri.actions;
     # We can make an action that runs a bash command using partial
     # function application.
