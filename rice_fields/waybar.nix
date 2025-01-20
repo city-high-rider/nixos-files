@@ -15,28 +15,28 @@ in {
       }
 
       window#waybar {
-        color: #a5adcb;
+        color: #${csh.primaryLighter};
       }
       .modules-left,
       .modules-right,
       .modules-center {
         border-radius: 6px;
-        background: #181926;
+        background: #${csh.base01};
         padding: 12px 0;
       }
       tooltip {
         color: #a5adcb;
-        background-color: #181926;
+        background-color: #${csh.base01};
         text-shadow: none;
       }
 
       tooltip * {
-        color: #a5adcb;
+        color: #${csh.primaryLighter};
         text-shadow: none;
       }
 
       #custom-sep {
-        color: #494d64;
+        color: #${csh.base04};
         margin: 4px 0;
       }
       #workspaces,
@@ -50,40 +50,43 @@ in {
         border-radius: 4px;
       }
       #workspaces button {
-        color: #5b6078;
+        color: #${csh.primaryLighter};
         background: none;
         padding: 0;
       }
       #workspaces button:hover {
-        color: #a6da95;
+        color: #${csh.base0B};
       }
       #workspaces button.active {
-        color: #f5bde6;
+        color: #${csh.base0A};
       }
       #workspaces button.focused {
-        color: #ff0000;
+        color: #${csh.base08};
+      }
+      #workspaces button.empty {
+        color: #${csh.base06};
       }
       #temperature {
-        color: #eed49f;
+        color: #${csh.base05};
       }
       #cpu {
-        color: #eed49f;
+        color: #${csh.base06};
       }
       #memory {
-        color: #eed49f;
+        color: #${csh.base07};
       }
       #clock {
         font-weight: 600;
-        color: #8bd5ca;
+        color: #${csh.secondary};
       }
       #custom-bluetooth_devices {
         color: #8aadf4;
       }
       #pulseaudio {
-        color: #a6da95;
+        color: #${csh.base0F};
       }
       #pulseaudio.muted {
-        color: #ed8796;
+        color: #${csh.base05};
       }
 
       #custom-powermenu {
