@@ -72,7 +72,7 @@ in {
       name = "JetBrainsMono Nerd Font";
       size = 24;
     };
-    themeFile = "Red_Sands";
+    themeFile = "Novel";
     settings = {
       background_opacity = "0.8";
       background_blur = 16;
