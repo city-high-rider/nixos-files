@@ -42,9 +42,6 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable =
     true; # Easiest to use and most distros use this by default.
-  # NM applet so I don't have to use the CLI to manage
-  # network connections.
-  programs.nm-applet.enable = true;
 
   # Automatic deletion of old builds and nix store optimization.
   nix.gc = {
@@ -205,16 +202,14 @@
     # For changing screen brightness
     brightnessctl
 
-    # Screenshotting
-    grim
-    slurp
+    # NM applet so I don't have to use the CLI to manage
+    # network connections.
+    networkmanagerapplet
+
+    # Simple photo editors
+    pinta
     swappy
 
-    # Simple photo editor
-    pinta
-
-    # video editor
-    davinci-resolve
     # Media player
     mpv
 
@@ -231,9 +226,6 @@
 
     # Mouse tweaks for g502
     piper
-
-    # Matrix client
-    iamb
   ];
 
   fonts.packages = with pkgs; [
