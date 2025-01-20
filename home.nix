@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let csh = import ./colorschemes/beigegreen.nix;
+let csh = import ./colorschemes/firewatch.nix;
 in {
 
   # I split up some programs with long config. files (namely rofi, hyprland, etc.) 
