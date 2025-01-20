@@ -1,5 +1,5 @@
 { ... }:
-let csh = import ../beigegreen.nix;
+let csh = import ../colorschemes/beigegreen.nix;
 in {
   programs.fuzzel.enable = true;
   programs.fuzzel.settings = {

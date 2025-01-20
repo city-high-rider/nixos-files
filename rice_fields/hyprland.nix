@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  csh = import ../beigegreen.nix;
+  csh = import ../colorschemes/beigegreen.nix;
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.swww}/bin/swww init &
     ${pkgs.swww}/bin/swww img "~/wallpapers/cat-butterfly.jpg" &

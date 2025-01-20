@@ -1,9 +1,16 @@
 { config, ... }:
-let csh = import ./beigegreen.nix;
+let csh = import ./colorschemes/beigegreen.nix;
 in {
   programs.niri.settings = {
-    spawn-at-startup =
-      [ { command = [ "waybar" ]; } { command = [ "mako" ]; } ];
+    spawn-at-startup = [
+      { command = [ "waybar" ]; }
+      {
+        command = [ "mako" ];
+      }
+      # Set wallpaper
+      { command = [ "swww-daemon" ]; }
+      { command = [ "swww" "img" "~/wallpapers/sunset.png" ]; }
+    ];
     binds = with config.lib.niri.actions;
     # We can make an action that runs a bash command using partial
     # function application.

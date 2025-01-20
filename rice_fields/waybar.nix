@@ -1,7 +1,7 @@
 # Configuration for waybar. A lot of this config was shamelessly stolen from
 # https://github.com/theCode-Breaker/riverwm/blob/main/waybar/river/river_style.css
 { config, pkgs, ... }:
-let csh = import ../beigegreen.nix;
+let csh = import ../colorschemes/beigegreen.nix;
 in {
   programs.waybar = {
     enable = true;

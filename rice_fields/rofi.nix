@@ -1,6 +1,6 @@
 # Styling and configuration for Rofi, the application launcher.
 { config, pkgs, ... }:
-let csh = import ../beigegreen.nix;
+let csh = import ../colorschemes/beigegreen.nix;
 in {
   programs.rofi = {
     enable = true;
