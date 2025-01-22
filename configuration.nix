@@ -229,6 +229,10 @@
 
     # Mouse tweaks for g502
     piper
+
+    # CLI interface to the clipboard. Used for editing copied things
+    # in Niri.
+    wl-clipboard
   ];
 
   fonts.packages = with pkgs; [
