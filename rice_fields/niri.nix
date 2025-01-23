@@ -6,6 +6,7 @@ in {
     # want to paste them somewhere. However, setting this path to
     # null will prevent the notification that pops up from showing
     # the preview :( Instead, I will set it to the same path each time,
+    # some change
     # so subsequent screenshots override the old ones.
     screenshot-path = "~/Pictures/Screenshots/Screenshot.png";
     spawn-at-startup = [
@@ -158,7 +159,7 @@ in {
         # Take whatever's in the clipboard and open it in swappy.
         # This is useful for annotating screenshots. You can remember it
         # like this : the Mod+A stands for "annotate."
-        "Mod+A".action = bsh "wl-paste | swappy -f -";
+        "Mod+A".action = bsh "wl-paste -t image | swappy -f -";
 
         # Powers off the monitors. To turn them back on, do any input like
         # moving the mouse or pressing any other key.
