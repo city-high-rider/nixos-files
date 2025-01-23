@@ -233,6 +233,9 @@
     # CLI interface to the clipboard. Used for editing copied things
     # in Niri.
     wl-clipboard
+
+    obsidian
+    megasync
   ];
 
   fonts.packages = with pkgs; [
