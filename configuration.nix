@@ -222,6 +222,8 @@
     # Games
     mangohud
     prismlauncher
+    gamescope
+    r2modman
 
     unzip
 
@@ -236,6 +238,12 @@
 
     obsidian
     megasync
+
+    # File manager ;)
+    tree
+
+    # For the MC server
+    cloudflared
   ];
 
   fonts.packages = with pkgs; [
