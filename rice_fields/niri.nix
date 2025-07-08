@@ -43,6 +43,20 @@ in {
         };
       };
     };
+
+    overview = {
+      zoom = 0.5;
+      backdrop-color = "#262626";
+
+      workspace-shadow = {
+        softness = 40;
+        spread = 10;
+        offset.x = 0;
+        offset.y = 10;
+        color = "#00000050";
+      };
+    };
+
     binds = with config.lib.niri.actions;
     # We can make an action that runs a bash command using partial
     # function application.
@@ -71,6 +85,8 @@ in {
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
         "Mod+Q".action = close-window;
+
+        "Mod+Tab".action = toggle-overview;
 
         # NOTE: I am using delete key instead of home
         # because my keyboard layout is fucking weird
@@ -117,17 +133,6 @@ in {
         "Mod+Page_Down".action = focus-workspace-down;
         "Mod+Page_Up".action = focus-workspace-up;
 
-        # Workspace window moving 
-        "Mod+Shift+1".action = move-column-to-workspace 1;
-        "Mod+Shift+2".action = move-column-to-workspace 2;
-        "Mod+Shift+3".action = move-column-to-workspace 3;
-        "Mod+Shift+4".action = move-column-to-workspace 4;
-        "Mod+Shift+5".action = move-column-to-workspace 5;
-        "Mod+Shift+6".action = move-column-to-workspace 6;
-        "Mod+Shift+7".action = move-column-to-workspace 7;
-        "Mod+Shift+8".action = move-column-to-workspace 8;
-        "Mod+Shift+9".action = move-column-to-workspace 9;
-        "Mod+Shift+0".action = move-column-to-workspace 10;
         "Mod+Shift+Page_Down".action = move-column-to-workspace-down;
         "Mod+Shift+Page_Up".action = move-column-to-workspace-up;
 
@@ -153,7 +158,7 @@ in {
 
         # Screenshotting
         "Print".action = screenshot;
-        "Ctrl+Print".action = screenshot-screen;
+        # "Ctrl+Print".action = screenshot-screen;
         "Alt+Print".action = screenshot-window;
 
         # Take whatever's in the clipboard and open it in swappy.
