@@ -2,6 +2,7 @@
 
   # The configs for different software/usecases live in their own files. Import them all here.
   imports = [
+    ./desktop/cursor.nix
     ./desktop/fuzzel.nix
     ./desktop/idledaemon.nix
     ./desktop/lockscreen.nix
