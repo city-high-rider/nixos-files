@@ -11,12 +11,9 @@ in {
     screenshot-path = "~/Pictures/Screenshots/Screenshot.png";
     spawn-at-startup = [
       { command = [ "waybar" ]; }
-      {
-        command = [ "mako" ];
-      }
-      # Set wallpaper
+      { command = [ "mako" ]; }
       { command = [ "swww-daemon" ]; }
-      { command = [ "swww" "img" "~/wallpapers/sunset.png" ]; }
+      { command = [ "swww" "img" "~/Pictures/wallpapers/sunset.png" ]; }
       { command = [ "xwayland-satellite" ]; }
     ];
     window-rules = [{
