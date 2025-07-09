@@ -1,19 +1,19 @@
 {
   # Colors are in hex.
-  lightest = "";
-  lighter = "";
-  light = "";
+  lightest = "FEFDF0";
+  lighter = "FDF8BF";
+  light = "FCF5A6";
   neutral = "";
-  dark = "";
-  darker = "";
-  darkest = "";
+  dark = "36324F";
+  darker = "262337";
+  darkest = "15141F";
   #===========
-  red = "";
+  red = "FF2600";
   orange = "";
   yellow = "";
   green = "";
   cyan = "";
-  blue = "";
+  blue = "3691B4";
   brown = "";
   purple = "";
 }

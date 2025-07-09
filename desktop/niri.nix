@@ -1,5 +1,5 @@
 { config, ... }:
-let csh = import ../colorschemes/firewatch.nix;
+let csh = import ../colorschemes/redline.nix;
 in {
   programs.niri.settings = {
     # I don't want screenshots to be saved to disk. Often I just
@@ -29,28 +29,28 @@ in {
         active.gradient = {
           angle = 45;
           in' = "srgb";
-          from = "${csh.primary}";
-          to = "${csh.primaryNeon}";
+          from = "${csh.red}";
+          to = "${csh.red}";
         };
         inactive.gradient = {
           angle = 45;
           in' = "srgb";
-          from = "${csh.base07}";
-          to = "${csh.base06}";
+          from = "${csh.dark}";
+          to = "${csh.darker}";
         };
       };
     };
 
     overview = {
       zoom = 0.5;
-      backdrop-color = "#262626";
+      backdrop-color = "#${csh.light}";
 
       workspace-shadow = {
         softness = 40;
         spread = 10;
         offset.x = 0;
         offset.y = 10;
-        color = "#00000050";
+        color = "${csh.darkest}50";
       };
     };
 
