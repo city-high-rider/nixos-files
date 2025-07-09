@@ -2,17 +2,17 @@
 
   # The configs for different software/usecases live in their own files. Import them all here.
   imports = [
-    ./rice_fields/fuzzel.nix
-    ./rice_fields/helix.nix
-    ./rice_fields/hyprland.nix
-    ./rice_fields/idledaemon.nix
-    ./rice_fields/lockscreen.nix
-    ./rice_fields/niri.nix
-    ./rice_fields/notifications.nix
-    ./rice_fields/terminal.nix
-    ./rice_fields/vcs.nix
-    ./rice_fields/waybar.nix
-    ./music-player.nix
+    ./desktop/fuzzel.nix
+    ./desktop/idledaemon.nix
+    ./desktop/lockscreen.nix
+    ./desktop/niri.nix
+    ./desktop/notifications.nix
+    ./desktop/waybar.nix
+
+    ./tools/music-player.nix
+    ./tools/helix.nix
+    ./tools/terminal.nix
+    ./tools/vcs.nix
   ];
 
   home = {
