@@ -13,7 +13,7 @@ in {
       { command = [ "waybar" ]; }
       { command = [ "mako" ]; }
       { command = [ "swww-daemon" ]; }
-      { command = [ "swww" "img" "~/Pictures/wallpapers/sunset.png" ]; }
+      { command = [ "swww" "img" "~/Pictures/wallpapers/landscape.png" ]; }
       { command = [ "xwayland-satellite" ]; }
     ];
     window-rules = [{
