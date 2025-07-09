@@ -12,6 +12,7 @@
 
     ./tools/music-player.nix
     ./tools/helix.nix
+    ./tools/obs.nix
     ./tools/terminal.nix
     ./tools/vcs.nix
   ];
@@ -24,14 +25,4 @@
 
   xdg.userDirs.enable = true;
   fonts.fontconfig.enable = true;
-
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-    ];
-  };
-
 }
