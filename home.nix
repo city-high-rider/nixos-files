@@ -1,8 +1,9 @@
-{ _, pkgs, ... }: {
+{ ... }: {
 
   # The configs for different software/usecases live in their own files. Import them all here.
   imports = [
     ./desktop/cursor.nix
+    ./desktop/fonts.nix
     ./desktop/fuzzel.nix
     ./desktop/idledaemon.nix
     ./desktop/lockscreen.nix
@@ -24,5 +25,4 @@
   };
 
   xdg.userDirs.enable = true;
-  fonts.fontconfig.enable = true;
 }
