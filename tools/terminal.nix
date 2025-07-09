@@ -20,6 +20,7 @@
       background_opacity = "0.8";
       background_blur = 16;
       shell = "fish";
+      hide_window_decorations = true;
     };
     shellIntegration.enableFishIntegration = true;
   };
