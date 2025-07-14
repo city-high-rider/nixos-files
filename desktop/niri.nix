@@ -19,6 +19,13 @@ in {
     window-rules = [{
       matches = [ { is-active = true; } { app-id = "kitty"; } ];
       draw-border-with-background = false;
+      geometry-corner-radius = {
+        top-left = 10.0;
+        top-right = 10.0;
+        bottom-left = 10.0;
+        bottom-right = 10.0;
+      };
+      clip-to-geometry = true;
     }];
     # For xwayland-satellite.
     environment.DISPLAY = ":0";
@@ -53,6 +60,8 @@ in {
         color = "${csh.darkest}50";
       };
     };
+
+    switch-events = { lid-close.action.spawn = [ "loginctl" "lock-session" ]; };
 
     binds = with config.lib.niri.actions;
     # We can make an action that runs a bash command using partial
