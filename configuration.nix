@@ -72,6 +72,9 @@
       # Use open-source kernel module?
       open = false;
     };
+
+    # This is for constraining drawing tablet area, so it's not super sensitive.
+    opentabletdriver.enable = true;
   };
 
   # Enables drivers for x and wayland, despite the name
