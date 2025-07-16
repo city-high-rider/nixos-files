@@ -1,7 +1,12 @@
 # Configuration for waybar. A lot of this config was shamelessly stolen from
 # https://github.com/theCode-Breaker/riverwm/blob/main/waybar/river/river_style.css
-{ config, pkgs, ... }:
-let csh = import ../colorschemes/firewatch.nix;
+{ ... }:
+let
+  csh = import ../colorschemes/redline.nix;
+  blends = {
+    pink2peach = [ "FCA6AD" "FAA598" "F7A584" "F5A46F" ];
+    crimson2yellow = [ "911015" "B24628" "D37C3B" "F4B24E" ];
+  };
 in {
   programs.waybar = {
     enable = true;
@@ -15,78 +20,120 @@ in {
       }
 
       window#waybar {
-        color: #${csh.primaryLighter};
+        color: #${csh.lighter};
       }
-      .modules-left,
-      .modules-right,
+      .modules-right {
+        border-radius: 6px;
+        padding: 4px 4px 0 0;
+        background: #${csh.lighter};
+      }
+      .modules-left {
+        border-radius: 6px;
+        background: #${csh.lighter};
+        padding: 0 4px 4px 0;
+      }
       .modules-center {
         border-radius: 6px;
-        background: #${csh.base01};
-        padding: 12px 0;
+        background: #${csh.light};
+        padding: 4px 4px 0 0;
       }
       tooltip {
         color: #a5adcb;
-        background-color: #${csh.base01};
+        background-color: #${csh.lighter};
         text-shadow: none;
       }
 
       tooltip * {
-        color: #${csh.primaryLighter};
+        color: #${csh.red};
         text-shadow: none;
       }
 
-      #custom-sep {
-        color: #${csh.base04};
-        margin: 4px 0;
+      #custom-sep0 {
+        color: #${builtins.elemAt blends.pink2peach 3};
+        background: #${builtins.elemAt blends.pink2peach 2};
+        margin: 0;
+        padding: 0 0 4 0;
       }
-      #workspaces,
-      #clock,
-      #custom-bluetooth_devices,
-      #custom-powermenu,
-      #pulseaudio,
-      #tray {
-      }
-      #workspaces {
-        border-radius: 4px;
-      }
-      #workspaces button {
-        color: #${csh.primaryLighter};
-        background: none;
-        padding: 0;
-      }
-      #workspaces button:hover {
-        color: #${csh.base0B};
-      }
-      #workspaces button.active {
-        color: #${csh.base0A};
-      }
-      #workspaces button.focused {
-        color: #${csh.base08};
-      }
-      #workspaces button.empty {
-        color: #${csh.base06};
-      }
-      #temperature {
-        color: #${csh.base05};
-      }
-      #cpu {
-        color: #${csh.base06};
-      }
-      #memory {
-        color: #${csh.base07};
+
+      #custom-sep1 {
+        color: #${builtins.elemAt blends.pink2peach 2};
+        background: #${builtins.elemAt blends.pink2peach 0};
+        margin: 0;
+        padding: 0 0 4 0;
       }
       #clock {
+        background: #${builtins.elemAt blends.pink2peach 3};
+        color: #${csh.lightest};
         font-weight: 600;
-        color: #${csh.secondary};
+        border-radius: 4px 4px 0 0;
+        margin: 0;
       }
-      #custom-bluetooth_devices {
-        color: #8aadf4;
+      #battery {
+        background: #${builtins.elemAt blends.pink2peach 2};
+        color: #${csh.lightest};
+      }
+      #custom-bluetooth_devices,
+      #custom-powermenu,
+      #pulseaudio {}
+      #tray {
+        background: #${builtins.elemAt blends.pink2peach 0};
+        padding-bottom: 2px;
+        border-radius: 0 0 4px 4px;
+      }
+      #workspaces {
+        border-radius: 6px;
+        background: #${csh.lighter};
+      }
+      #workspaces button {
+        background: none;
+        padding: 0;
+        color: #${csh.dark};
+      }
+      #workspaces button.focused {
+        color: #${csh.red};
+      }
+      #cpu {
+        color: #${csh.lightest};
+        background: #${builtins.elemAt blends.crimson2yellow 3};
+      }
+      #custom-sep2 {
+        color: #${builtins.elemAt blends.crimson2yellow 3};
+        background: #${builtins.elemAt blends.crimson2yellow 2};
+        margin: 0;
+        padding: 0 0 4 0;
+      }
+      #memory {
+        color: #${csh.lightest};
+        background: #${builtins.elemAt blends.crimson2yellow 2};
+      }
+      #custom-sep3 {
+        color: #${builtins.elemAt blends.crimson2yellow 2};
+        background: #${builtins.elemAt blends.crimson2yellow 1};
+        margin: 0;
+        padding: 0 0 4 0;
+      }
+      #temperature {
+        color: #${csh.lightest};
+        background: #${builtins.elemAt blends.crimson2yellow 1};
+      }
+      #custom-sep4 {
+        color: #${builtins.elemAt blends.crimson2yellow 1};
+        background: #${builtins.elemAt blends.crimson2yellow 0};
+        margin: 0;
+        padding: 0 0 4 0;
       }
       #pulseaudio {
-        color: #${csh.base0F};
+        color: #${csh.lightest};
+        background: #${builtins.elemAt blends.crimson2yellow 0};
+        padding: 0 0 4px 0;
       }
       #pulseaudio.muted {
-        color: #${csh.base05};
+        color: #${csh.lightest};
+        background: #${builtins.elemAt blends.crimson2yellow 0};
+        padding: 0 0 4px 0;
+      }
+      #custom-bluetooth_devices {
+        color: #${csh.darkest};
       }
 
       #custom-powermenu {
@@ -99,24 +146,43 @@ in {
       position = "left";
       width = 28;
       margin = "2 0 2 2";
-      spacing = 2;
-      modules-left = [ "clock" "custom/sep" "battery" "custom/sep" "tray" ];
+      spacing = 0;
+      modules-left = [ "clock" "custom/sep0" "battery" "custom/sep1" "tray" ];
       modules-center = [ "niri/workspaces" ];
       modules-right = [
         "cpu"
-        "custom/sep"
+        "custom/sep2"
         "memory"
-        "custom/sep"
+        "custom/sep3"
         "temperature"
-        "custom/sep"
+        "custom/sep4"
         "pulseaudio"
       ];
-      "custom/sep" = { format = ""; };
+      "custom/sep0" = {
+        format = "";
+        rotate = 270;
+      };
+      "custom/sep1" = {
+        format = "";
+        rotate = 270;
+      };
+      "custom/sep2" = {
+        format = "";
+        rotate = 270;
+      };
+      "custom/sep3" = {
+        format = "";
+        rotate = 270;
+      };
+      "custom/sep4" = {
+        format = "";
+        rotate = 270;
+      };
       "niri/workspaces" = {
         format = "{icon}";
         format-icons = {
-          active = "";
-          urgent = "";
+          active = "󰮔";
+          urgent = "󰀨";
           default = "";
         };
       };
