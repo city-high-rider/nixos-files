@@ -247,6 +247,9 @@
 
     # For the MC server
     cloudflared
+
+    # keyboard mouse control
+    wl-kbptr
   ];
 
   fonts.packages = with pkgs; [ font-awesome nerd-fonts.jetbrains-mono ];

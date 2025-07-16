@@ -90,6 +90,8 @@ in {
 
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
+        "Mod+Semicolon".action = spawn [ "wl-kbptr" ];
+
         "Mod+Q".action = close-window;
 
         "Mod+Tab".action = toggle-overview;
