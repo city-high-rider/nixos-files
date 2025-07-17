@@ -80,6 +80,17 @@ in {
         padding-bottom: 2px;
         border-radius: 0 0 4px 4px;
       }
+      #tray menu menuitem:hover {
+        color: #${csh.red};
+        background: #${csh.light};
+        border: 2px solid #${csh.red};
+      }
+      #tray menu {
+        background: #${csh.lightest};
+        border: 2px solid #${csh.red};
+        color: #${csh.darker};
+        border-radius: 4px;
+      }
       #workspaces {
         border-radius: 6px;
         background: #${csh.lighter};
@@ -196,6 +207,7 @@ in {
       tray = {
         icon-size = 18;
         show-passive-items = "true";
+        spacing = 4;
       };
       temperature = {
         rotate = 90;
