@@ -27,6 +27,14 @@
         }
 
         {
+          name = "haskell";
+          auto-format = true;
+          roots = [ "Setup.hs" "stack.yaml" "*.cabal" ];
+          formatter.command = "fourmolu";
+          formatter.args = [ "--stdin-input-file" "%{buffer_name}" ];
+        }
+
+        {
           name = "mcfunction";
           file-types = [ "mcfunction" ];
           scope = "source.mcfunction";
