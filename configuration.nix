@@ -34,6 +34,8 @@
   # enable TLP for laptop battery
   services.tlp.enable = true;
 
+  services.logmein-hamachi.enable = true;
+
   # HostID for ZFS
   networking.hostId = "81fab459";
 
@@ -274,8 +276,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 42420 ];
+  networking.firewall.allowedUDPPorts = [ 42420 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
