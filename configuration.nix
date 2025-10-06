@@ -162,13 +162,16 @@
   users.users.nick = {
     isNormalUser = true;
     initialPassword = "cats";
-    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs;
       [
         #firefox
         #tree
       ];
   };
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -229,6 +232,7 @@
     prismlauncher
     gamescope
     r2modman
+    haguichi
 
     unzip
 
@@ -276,8 +280,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 42420 ];
-  networking.firewall.allowedUDPPorts = [ 42420 ];
+  networking.firewall.allowedTCPPorts = [ 42420 7777 ];
+  networking.firewall.allowedUDPPorts = [ 42420 7777 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
