@@ -25,11 +25,13 @@ in {
       .modules-right {
         border-radius: 6px;
         padding: 4px 4px 0 0;
+        margin-top: 8px;
         background: #${csh.lighter};
       }
       .modules-left {
         border-radius: 6px;
         background: #${csh.lighter};
+        margin-bottom: 8px;
         padding: 0 4px 4px 0;
       }
       .modules-center {
