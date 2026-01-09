@@ -27,6 +27,12 @@ in {
       };
       clip-to-geometry = true;
     }];
+    input.keyboard.xkb = {
+      layout = "us,us";
+      variant = ",dvp";
+      options = "grp:shift_caps_toggle";
+    };
+
     # For xwayland-satellite.
     environment.DISPLAY = ":0";
     layout = {
