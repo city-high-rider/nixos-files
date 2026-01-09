@@ -246,7 +246,6 @@
     wl-clipboard
 
     obsidian
-    megasync
 
     # File manager ;)
     tree
@@ -280,8 +279,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 42420 7777 ];
-  networking.firewall.allowedUDPPorts = [ 42420 7777 ];
+  networking.firewall.allowedTCPPorts = [ 42420 7777 5678 25565 ];
+  networking.firewall.allowedUDPPorts = [ 42420 7777 5678 25565 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
