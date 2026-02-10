@@ -86,8 +86,8 @@ in {
         "XF86MonBrightnessDown".action = bsh ''
           brightnessctl s 10%- && brightnessctl g | xargs -I  {} notify-send -t 2000 "Brightness: {}"'';
 
-        "Mod+D".action = spawn "fuzzel";
-        "Mod+Return".action = spawn "kitty";
+        "Mod+E".action = spawn "fuzzel";
+        "Mod+U".action = spawn "kitty";
         # This locks the screen. The 'pidof' part is there to avoid
         # launching multiple instances of it.
         "Mod+Alt+L".action = bsh "pidof hyprlock || hyprlock";
@@ -106,53 +106,36 @@ in {
         # because my keyboard layout is fucking weird
 
         # Window focus
-        "Mod+H".action = focus-column-left;
-        "Mod+J".action = focus-window-down;
-        "Mod+K".action = focus-window-up;
-        "Mod+L".action = focus-column-right;
+        "Mod+D".action = focus-column-left;
+        "Mod+H".action = focus-workspace-down;
+        "Mod+T".action = focus-workspace-up;
+        "Mod+N".action = focus-column-right;
         "Mod+Delete".action = focus-column-first;
         "Mod+End".action = focus-column-last;
 
         # Monitor focus
-        "Mod+Ctrl+H".action = focus-monitor-left;
-        "Mod+Ctrl+J".action = focus-monitor-down;
-        "Mod+Ctrl+K".action = focus-monitor-up;
-        "Mod+Ctrl+L".action = focus-monitor-right;
+        "Mod+Ctrl+D".action = focus-monitor-left;
+        "Mod+Ctrl+H".action = focus-monitor-down;
+        "Mod+Ctrl+T".action = focus-monitor-up;
+        "Mod+Ctrl+N".action = focus-monitor-right;
 
         # Window moving
-        "Mod+Shift+H".action = move-column-left;
-        "Mod+Shift+J".action = move-window-down;
-        "Mod+Shift+K".action = move-window-up;
-        "Mod+Shift+L".action = move-column-right;
-        "Mod+Shift+Delete".action = move-column-to-first;
-        "Mod+Shift+End".action = move-column-to-last;
+        "Mod+Shift+D".action = move-column-left;
+        "Mod+Shift+H".action = move-column-to-workspace-down;
+        "Mod+Shift+T".action = move-column-to-workspace-up;
+        "Mod+Shift+N".action = move-column-right;
 
         # Monitor moving
-        "Mod+Ctrl+Shift+H".action = move-column-to-monitor-left;
-        "Mod+Ctrl+Shift+J".action = move-window-to-monitor-down;
-        "Mod+Ctrl+Shift+K".action = move-window-to-monitor-up;
-        "Mod+Ctrl+Shift+L".action = move-column-to-monitor-right;
-
-        # Workspace switching
-        "Mod+1".action = focus-workspace 1;
-        "Mod+2".action = focus-workspace 2;
-        "Mod+3".action = focus-workspace 3;
-        "Mod+4".action = focus-workspace 4;
-        "Mod+5".action = focus-workspace 5;
-        "Mod+6".action = focus-workspace 6;
-        "Mod+7".action = focus-workspace 7;
-        "Mod+8".action = focus-workspace 8;
-        "Mod+9".action = focus-workspace 9;
-        "Mod+0".action = focus-workspace 10;
-        "Mod+Page_Down".action = focus-workspace-down;
-        "Mod+Page_Up".action = focus-workspace-up;
-
-        "Mod+Shift+Page_Down".action = move-column-to-workspace-down;
-        "Mod+Shift+Page_Up".action = move-column-to-workspace-up;
+        "Mod+Ctrl+Shift+D".action = move-column-to-monitor-left;
+        "Mod+Ctrl+Shift+H".action = move-window-to-monitor-down;
+        "Mod+Ctrl+Shift+T".action = move-window-to-monitor-up;
+        "Mod+Ctrl+Shift+N".action = move-column-to-monitor-right;
 
         # Consuming / expelling
-        "Mod+BracketLeft".action = consume-or-expel-window-left;
-        "Mod+BracketRight".action = consume-or-expel-window-right;
+        "Mod+Comma".action = consume-or-expel-window-left;
+        "Mod+Period".action = consume-or-expel-window-right;
+        "Mod+Alt+H".action = move-window-down;
+        "Mod+Alt+T".action = move-window-up;
 
         # Resizing
         "Mod+R".action = switch-preset-column-width;
