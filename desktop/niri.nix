@@ -27,12 +27,6 @@ in {
       };
       clip-to-geometry = true;
     }];
-    input.keyboard.xkb = {
-      layout = "us,us";
-      variant = ",dvp";
-      options = "grp:shift_caps_toggle";
-    };
-
     # For xwayland-satellite.
     environment.DISPLAY = ":0";
     layout = {
@@ -68,6 +62,12 @@ in {
     };
 
     switch-events = { lid-close.action.spawn = [ "loginctl" "lock-session" ]; };
+
+    input.keyboard.xkb = {
+      layout = "us,us";
+      variant = "dvp,";
+      options = "grp:alt_shift_toggle";
+    };
 
     binds = with config.lib.niri.actions;
     # We can make an action that runs a bash command using partial

@@ -9,10 +9,6 @@
     ./hardware-configuration.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-
   # Use GRUB as the bootloader.
   boot.loader.grub = {
     enable = true;
@@ -96,32 +92,6 @@
   # Set your time zone.
   time.timeZone = "Pacific/Auckland";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # sound.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -129,6 +99,14 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+  };
+
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings.main = { capslock = "backspace"; };
+    };
   };
 
   # Enable bluetooth support
@@ -246,6 +224,7 @@
     wl-clipboard
 
     obsidian
+    simplex-chat-desktop
 
     # File manager ;)
     tree
