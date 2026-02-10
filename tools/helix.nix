@@ -34,6 +34,8 @@
 
     languages = {
       language-server.texlab.config.texlab.build.onSave = true;
+      language-server.haskell-language-server.config.haskell.plugin.stan.globalOn =
+        true;
       language = [
         {
           name = "nix";
