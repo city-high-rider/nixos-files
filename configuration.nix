@@ -103,12 +103,28 @@
 
   services.keyd = {
     enable = true;
+
     keyboards.default = {
       ids = [ "*" ];
-      settings.main = { capslock = "backspace"; };
+      settings = {
+        main = {
+          capslock = "backspace";
+          rightalt = "layer(nav)";
+        };
+
+        nav = {
+          capslock = "C-backspace";
+          space = "enter";
+          e = "up";
+          s = "left";
+          d = "down";
+          f = "right";
+          w = "home";
+          r = "end";
+        };
+      };
     };
   };
-
   # Enable bluetooth support
   hardware.bluetooth = {
     enable = true;

@@ -7,18 +7,7 @@
     '';
   };
 
-  programs.fish = {
-    enable = true;
-    shellInit = ''
-      # Accept suggestion (inline completion)
-      bind \t accept-autosuggestion
-
-      # Optional: cycle through suggestions (Shift-Tab)
-      # bind \e[Z complete
-      bind \ep up-or-search    # Alt+P = previous command
-      bind \en down-or-search  # Alt+N = next command
-    '';
-  };
+  programs.fish = { enable = true; };
 
   programs.kitty = {
     enable = true;
