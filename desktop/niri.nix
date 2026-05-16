@@ -154,9 +154,9 @@ in {
         "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
         # Screenshotting
-        "Print".action = screenshot;
+        # "Print".action = screenshot;
         # "Ctrl+Print".action = screenshot-screen;
-        "Alt+Print".action = screenshot-window;
+        # "Alt+Print".action = screenshot-window;
 
         # Take whatever's in the clipboard and open it in swappy.
         # This is useful for annotating screenshots. You can remember it
