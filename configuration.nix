@@ -9,11 +9,12 @@
     ./hardware-configuration.nix
   ];
 
+  boot.loader.efi.canTouchEfiVariables = true;
   # Use GRUB as the bootloader.
   boot.loader.grub = {
     enable = true;
     devices = [ "nodev" ];
-    efiInstallAsRemovable = true;
+    efiInstallAsRemovable = false;
     efiSupport = true;
     useOSProber = true;
   };
@@ -156,13 +157,10 @@
   users.users.nick = {
     isNormalUser = true;
     initialPassword = "cats";
-    extraGroups = [ "wheel" "audio" "libvirtd" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs;
-      [
-        #firefox
-        #tree
-      ];
+    extraGroups = [ "wheel" "audio" "libvirtd" "docker" ];
   };
+
+  virtualisation.docker.enable = true;
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -241,6 +239,8 @@
 
     obsidian
     simplex-chat-desktop
+    stoat-desktop
+    vesktop
 
     # File manager ;)
     tree
