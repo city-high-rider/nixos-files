@@ -57,6 +57,12 @@
           formatter.command = "fourmolu";
           formatter.args = [ "--stdin-input-file" "%{buffer_name}" ];
         }
+        {
+          name = "javascript";
+          auto-format = true;
+          formatter.command = "prettier";
+          formatter.args = [ "--stdin-filepath" "%{buffer_name}" ];
+        }
 
         {
           name = "mcfunction";
