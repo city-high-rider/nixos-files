@@ -1,0 +1,31 @@
+theme = "everforest_light"
+
+[editor]
+bufferline = "multiple"
+line-number = "relative"
+
+[keys.normal]
+A-q = "delete_selection_noyank"
+K = "till_prev_char"
+d = "move_char_left"
+h = "move_line_down"
+k = "find_till_char"
+n = "move_char_right"
+q = "delete_selection"
+t = "move_line_up"
+
+[keys.normal.space]
+Q = "record_macro"
+q = "replay_macro"
+
+[keys.select]
+A-q = "delete_selection_noyank"
+K = "extend_till_prev_char"
+L = "extend_search_prev"
+k = "extend_till_char"
+l = "extend_search_next"
+q = "delete_selection"
+
+[keys.select.space]
+Q = "record_macro"
+q = "replay_macro"

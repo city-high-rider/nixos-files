@@ -1,0 +1,63 @@
+[[grammar]]
+name = "mcfunction"
+
+[grammar.source]
+git = "https://github.com/IoeCmcomc/tree-sitter-mcfunction"
+rev = "5bf1f08320697c24f395af76422a845f9f627fb0"
+
+[[language]]
+auto-format = true
+name = "nix"
+
+[language.formatter]
+command = "/nix/store/ihzhi2cgjfhvqbap36fx91hbj524ym5l-nixfmt-1.2.0/bin/nixfmt"
+
+[[language]]
+auto-format = true
+language-servers = ["csharp-ls"]
+name = "c-sharp"
+
+[language.formatter]
+args = ["format", "--write-stdout"]
+command = "csharpier"
+
+[[language]]
+auto-format = true
+name = "elm"
+
+[language.formatter]
+args = ["--stdin"]
+command = "elm-format"
+
+[[language]]
+auto-format = true
+name = "haskell"
+roots = ["Setup.hs", "stack.yaml", "*.cabal", "backend.cabal", "euclid-gcd.cabal"]
+
+[language.formatter]
+args = ["--stdin-input-file", "%{buffer_name}"]
+command = "fourmolu"
+
+[[language]]
+auto-format = true
+name = "javascript"
+
+[language.formatter]
+args = ["--stdin-filepath", "%{buffer_name}"]
+command = "prettier"
+
+[[language]]
+comment-token = ["#"]
+file-types = ["mcfunction"]
+name = "mcfunction"
+roots = ["pack.mcmeta"]
+scope = "source.mcfunction"
+
+[language-server.csharp-ls]
+command = "csharp-ls"
+
+[language-server.haskell-language-server.config.haskell.plugin.stan]
+globalOn = true
+
+[language-server.texlab.config.texlab.build]
+onSave = true
