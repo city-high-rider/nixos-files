@@ -2,10 +2,16 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -24,7 +30,10 @@
   boot.zfs.requestEncryptionCredentials = true;
 
   # No fucking clue what the second one does, but sound doesn't work without it.
-  boot.kernelParams = [ "boot.shell_on_fail" "snd-intel-dspcfg.dsp_driver=1" ];
+  boot.kernelParams = [
+    "boot.shell_on_fail"
+    "snd-intel-dspcfg.dsp_driver=1"
+  ];
 
   # Use ZFS auto scrub
   services.zfs.autoScrub.enable = true;
@@ -39,8 +48,7 @@
   networking.hostName = "omen15"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Automatic deletion of old builds and nix store optimization.
   nix.gc = {
@@ -52,7 +60,9 @@
 
   # Enable niri.
   # This also enables the necessary system components for niri to function properly, such as desktop portals and polkit.
-  programs.niri = { enable = true; };
+  programs.niri = {
+    enable = true;
+  };
 
   environment.sessionVariables = {
     # If your cursor gets invisible
@@ -62,7 +72,9 @@
   };
 
   hardware = {
-    graphics = { enable = true; };
+    graphics = {
+      enable = true;
+    };
 
     # Most wayland compositors need this
     nvidia = {
@@ -88,7 +100,9 @@
   # Logind handles what happens when laptop lid is closed.
   # https://nixos.wiki/wiki/Logind
   # I want hyprland to detect these events and do stuff, so...
-  services.logind = { lidSwitch = "ignore"; };
+  services.logind = {
+    lidSwitch = "ignore";
+  };
 
   # Set your time zone.
   time.timeZone = "Pacific/Auckland";
@@ -140,12 +154,9 @@
   # services.libinput.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall =
-      true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall =
-      true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall =
-      true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
   # Magically make stuff faster by requesting optimizations
@@ -157,7 +168,12 @@
   users.users.nick = {
     isNormalUser = true;
     initialPassword = "cats";
-    extraGroups = [ "wheel" "audio" "libvirtd" "docker" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "libvirtd"
+      "docker"
+    ];
   };
 
   virtualisation.docker.enable = true;
@@ -167,7 +183,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     # Helix and nix language server.
     helix
@@ -252,7 +271,10 @@
     wl-kbptr
   ];
 
-  fonts.packages = with pkgs; [ font-awesome nerd-fonts.jetbrains-mono ];
+  fonts.packages = with pkgs; [
+    font-awesome
+    nerd-fonts.jetbrains-mono
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -274,8 +296,18 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 42420 7777 5678 25565 ];
-  networking.firewall.allowedUDPPorts = [ 42420 7777 5678 25565 ];
+  networking.firewall.allowedTCPPorts = [
+    42420
+    7777
+    5678
+    25565
+  ];
+  networking.firewall.allowedUDPPorts = [
+    42420
+    7777
+    5678
+    25565
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -304,4 +336,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

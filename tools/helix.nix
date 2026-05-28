@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -34,13 +35,24 @@
 
     languages = {
       language-server.texlab.config.texlab.build.onSave = true;
-      language-server.haskell-language-server.config.haskell.plugin.stan.globalOn =
-        true;
+      language-server.haskell-language-server.config.haskell.plugin.stan.globalOn = true;
+      language-server.csharp-ls.command = "csharp-ls";
       language = [
         {
           name = "nix";
           auto-format = true;
           formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+        }
+
+        {
+          name = "c-sharp";
+          auto-format = true;
+          formatter.command = "csharpier";
+          formatter.args = [
+            "format"
+            "--write-stdout"
+          ];
+          language-servers = [ "csharp-ls" ];
         }
 
         {
@@ -53,15 +65,27 @@
         {
           name = "haskell";
           auto-format = true;
-          roots = [ "Setup.hs" "stack.yaml" "*.cabal" "backend.cabal" ];
+          roots = [
+            "Setup.hs"
+            "stack.yaml"
+            "*.cabal"
+            "backend.cabal"
+            "euclid-gcd.cabal"
+          ];
           formatter.command = "fourmolu";
-          formatter.args = [ "--stdin-input-file" "%{buffer_name}" ];
+          formatter.args = [
+            "--stdin-input-file"
+            "%{buffer_name}"
+          ];
         }
         {
           name = "javascript";
           auto-format = true;
           formatter.command = "prettier";
-          formatter.args = [ "--stdin-filepath" "%{buffer_name}" ];
+          formatter.args = [
+            "--stdin-filepath"
+            "%{buffer_name}"
+          ];
         }
 
         {
@@ -72,11 +96,13 @@
           roots = [ "pack.mcmeta" ];
         }
       ];
-      grammar = [{
-        name = "mcfunction";
-        source.git = "https://github.com/IoeCmcomc/tree-sitter-mcfunction";
-        source.rev = "5bf1f08320697c24f395af76422a845f9f627fb0";
-      }];
+      grammar = [
+        {
+          name = "mcfunction";
+          source.git = "https://github.com/IoeCmcomc/tree-sitter-mcfunction";
+          source.rev = "5bf1f08320697c24f395af76422a845f9f627fb0";
+        }
+      ];
     };
   };
 }
