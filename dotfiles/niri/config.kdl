@@ -90,19 +90,19 @@ binds {
     Mod+T     { focus-workspace-up; }
     Mod+N     { focus-column-right; }
 
-    Mod+Ctrl+D     { move-column-left; }
-    Mod+Ctrl+H     { move-column-to-workspace-down; }
-    Mod+Ctrl+T     { move-column-to-workspace-up; }
-    Mod+Ctrl+N     { move-column-right; }
+    Mod+Shift+D     { move-column-left; }
+    Mod+Shift+H     { move-column-to-workspace-down; }
+    Mod+Shift+T     { move-column-to-workspace-up; }
+    Mod+Shift+N     { move-column-right; }
 
-    Mod+Shift+D     { focus-monitor-left; }
-    Mod+Shift+N     { focus-monitor-right; }
+    Mod+Ctrl+D     { focus-monitor-left; }
+    Mod+Ctrl+N     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+D     { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+N     { move-column-to-monitor-right; }
 
-    Mod+Shift+H         { move-workspace-down; }
-    Mod+Shift+T         { move-workspace-up; }
+    Mod+Ctrl+H         { move-workspace-down; }
+    Mod+Ctrl+T         { move-workspace-up; }
 
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
