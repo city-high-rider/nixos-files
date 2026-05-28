@@ -19,7 +19,7 @@ input {
 output "eDP-1" {
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
     mode "1920x1080@120.030"
-    scale 2
+    scale 1
     transform "normal"
     position x=1280 y=0
 }
@@ -33,7 +33,7 @@ layout {
         proportion 0.66667
     }
 
-    default-column-width {}
+    default-column-width { proportion 1.0; }
     focus-ring {
         width 4
         // Color of the ring on the active monitor.
