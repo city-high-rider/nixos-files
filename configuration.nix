@@ -64,6 +64,8 @@
     enable = true;
   };
 
+  programs.git.enable = true;
+
   environment.sessionVariables = {
     # If your cursor gets invisible
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -193,10 +195,6 @@
     nil
 
     wget
-    home-manager
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
     # Notification daemon
     mako
     libnotify
