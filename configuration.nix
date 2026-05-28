@@ -152,6 +152,12 @@
   # For having bluetooth GUI
   services.blueman.enable = true;
 
+  services.xserver.xkb = {
+    layout = "us,us";
+    variant = "dvp,"; # dvp is Programmer Dvorak, followed by a default QWERTY
+    options = "grp:alt_shift_toggle"; # Press Alt+Shift to toggle between layouts
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
   programs.steam = {
