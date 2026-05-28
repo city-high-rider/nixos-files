@@ -210,6 +210,8 @@
     # Wallpaper daemon
     swww
 
+    fuzzel
+
     # for running X apps on Niri
     xwayland-satellite
 
