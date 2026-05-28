@@ -209,7 +209,7 @@
     xdg-user-dirs
 
     # Wallpaper daemon
-    swww
+    awww
 
     fuzzel
 
@@ -241,6 +241,7 @@
 
     # Media player
     mpv
+    amberol
 
     fortune-kind
     cowsay
