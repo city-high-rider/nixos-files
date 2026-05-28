@@ -28,6 +28,7 @@
   # Support ZFS and request credentials on boot
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
+  boot.zfs.forceImportRoot = false;
 
   # No fucking clue what the second one does, but sound doesn't work without it.
   boot.kernelParams = [
@@ -248,7 +249,6 @@
     mangohud
     prismlauncher
     gamescope
-    r2modman
     haguichi
 
     unzip
@@ -262,9 +262,7 @@
     # in Niri.
     wl-clipboard
 
-    obsidian
     simplex-chat-desktop
-    stoat-desktop
     vesktop
 
     # File manager ;)
