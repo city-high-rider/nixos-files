@@ -252,6 +252,7 @@
     haguichi
 
     unzip
+    gh
 
     warp
 
