@@ -216,7 +216,7 @@
     xwayland-satellite
 
     # Terminal emulator
-    kitty
+    foot
 
     # Color picker
     hyprpicker
