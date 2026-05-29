@@ -269,6 +269,7 @@
 
     # File manager ;)
     tree
+    yazi
 
     # For the MC server
     cloudflared
