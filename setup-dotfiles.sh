@@ -2,16 +2,26 @@
 set -euo pipefail
 
 DOTFILES="$HOME/nix/dotfiles"
-CONFIG="$HOME/.config"
 
-find "$DOTFILES" -type f | while read -r src; do
-    rel="${src#$DOTFILES/}"
-    dst="$CONFIG/$rel"
+find "$DOTFILES" \
+    -path "$DOTFILES/.git" -prune -o \
+    -type f -print |
+while read -r src; do
+
+    rel="$(realpath --relative-to="$DOTFILES" "$src")"
+    dst="$HOME/$rel"
 
     mkdir -p "$(dirname "$dst")"
 
     if [ -L "$dst" ]; then
-        echo "exists (symlink): $dst"
+        current="$(readlink "$dst")"
+
+        if [ "$current" = "$src" ]; then
+            echo "exists: $dst"
+        else
+            echo "wrong symlink: $dst"
+        fi
+
         continue
     fi
 
@@ -23,4 +33,3 @@ find "$DOTFILES" -type f | while read -r src; do
     echo "linking $dst -> $src"
     ln -s "$src" "$dst"
 done
-
