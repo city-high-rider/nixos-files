@@ -4,6 +4,9 @@ theme = "everforest_light"
 bufferline = "multiple"
 line-number = "relative"
 
+[editor.file-picker]
+hidden = false
+
 [keys.normal]
 A-q = "delete_selection_noyank"
 K = "till_prev_char"
