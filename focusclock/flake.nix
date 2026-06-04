@@ -13,7 +13,7 @@
           owner = "KorigamiK";
           repo = "focusclock";
           rev = "main";
-          hash = "";
+          hash = "sha256-f9IYuOWrjsqhVx/A8ybhN33H9U/lEwvHNf4GhdmcOWw=";
         };
         nativeBuildInputs = with pkgs; [
           cmake

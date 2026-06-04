@@ -211,7 +211,10 @@
     # Wallpaper daemon
     awww
 
+    swaylock
     fuzzel
+    wlclock
+    focusclock
 
     # for running X apps on Niri
     xwayland-satellite
