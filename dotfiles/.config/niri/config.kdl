@@ -82,6 +82,7 @@ binds {
     Mod+O hotkey-overlay-title="Open Yazi" { spawn-sh "foot -e yazi"; }
     Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
     Mod+A hotkey-overlay-title="Edit latest screenshot / clipboard" { spawn-sh "wl-paste -t image | swappy -f -"; }
+    Mod+Comma hotkey-overlay-title="Toggle clock" {spawn-sh "pkill -SIGTERM focusclock || focusclock -f 90 -F monospace -c 279BF5CC -t -T 70 -y 2"; }
  
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
