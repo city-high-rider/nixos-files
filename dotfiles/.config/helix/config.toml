@@ -16,6 +16,8 @@ k = "find_till_char"
 n = "move_char_right"
 q = "delete_selection"
 t = "move_line_up"
+A-h = "search_next"
+A-t = "search_prev"
 
 [keys.normal.space]
 Q = "record_macro"

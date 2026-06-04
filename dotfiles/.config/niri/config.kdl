@@ -56,15 +56,22 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "mako"
 spawn-at-startup "awww-daemon"
-spawn-sh-at-startup "awww img /home/nick/Pictures/mocha2.png"
+// spawn-at-startup "wlclock"
+spawn-sh-at-startup "awww img /home/nick/Pictures/wallpapers/splash7.webp"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay { }
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/latest-screenshot.png"
 
 animations { }
+
+window-rule {
+    match app-id="steam" is-floating=true
+    default-floating-position x=0 y=0 relative-to="top"
+    open-focused false
+}
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -72,9 +79,10 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+U hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
     Mod+E hotkey-overlay-title="Open Fuzzel" { spawn "fuzzel"; }
-
-    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    
+    Mod+O hotkey-overlay-title="Open Yazi" { spawn-sh "foot -e yazi"; }
+    Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
+    Mod+A hotkey-overlay-title="Edit latest screenshot / clipboard" { spawn-sh "wl-paste -t image | swappy -f -"; }
+ 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
