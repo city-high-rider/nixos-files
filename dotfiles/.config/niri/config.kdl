@@ -53,7 +53,7 @@ layout {
     struts { }
 }
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "sunsetr"
 spawn-at-startup "mako"
 spawn-at-startup "awww-daemon"
 // spawn-at-startup "wlclock"
@@ -68,7 +68,8 @@ screenshot-path "~/Pictures/Screenshots/latest-screenshot.png"
 animations { }
 
 window-rule {
-    match app-id="steam" is-floating=true
+    match app-id="steam" title=r"^notificationtoasts_.*$"
+    open-floating true
     default-floating-position x=0 y=0 relative-to="top"
     open-focused false
 }
@@ -83,6 +84,7 @@ binds {
     Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
     Mod+A hotkey-overlay-title="Edit latest screenshot / clipboard" { spawn-sh "wl-paste -t image | swappy -f -"; }
     Mod+Comma hotkey-overlay-title="Toggle clock" {spawn-sh "pkill -SIGTERM focusclock || focusclock -f 90 -F monospace -c 279BF5CC -t -T 70 -y 2"; }
+    Mod+Shift+C { set-dynamic-cast-window; }
  
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }

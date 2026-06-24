@@ -1,0 +1,4 @@
+on-button-right=exec makoctl menu -- fuzzel -d
+on-button-left=invoke-default-action
+on-button-middle=dismiss
+

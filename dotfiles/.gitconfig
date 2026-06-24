@@ -1,0 +1,15 @@
+[user]
+	name = city-high-rider
+	email = 60808209+city-high-rider@users.noreply.github.com
+
+[credential "https://github.com"]
+	helper = 
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !gh auth git-credential
+
+[credential "https://codeberg.org/"]
+	helper = 
+	helper = "store"
