@@ -65,6 +65,7 @@
     enable = true;
   };
 
+  programs.direnv.enable = true;
   programs.git.enable = true;
 
   environment.sessionVariables = {
@@ -190,6 +191,16 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  programs.obs-studio = {
+    enable = true;
+    package = (pkgs.obs-studio.override { cudaSupport = true; });
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nix.settings.experimental-features = [
@@ -213,8 +224,9 @@
 
     swaylock
     fuzzel
-    wlclock
     focusclock
+
+    sunsetr
 
     # for running X apps on Niri
     xwayland-satellite
@@ -241,6 +253,9 @@
     # Simple photo editors
     pinta
     swappy
+
+    # Whiteboard
+    lorien
 
     # Media player
     mpv
@@ -269,6 +284,7 @@
 
     simplex-chat-desktop
     vesktop
+    mumble
 
     # File manager ;)
     tree
@@ -311,12 +327,14 @@
     7777
     5678
     25565
+    50176
   ];
   networking.firewall.allowedUDPPorts = [
     42420
     7777
     5678
     25565
+    50176
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
